@@ -48,3 +48,23 @@ body{
     width: 68px;
 
 }
+#tax{
+    margin: 0 auto;
+    grid-row: 2;
+    grid-column: 2;
+}
+#taxHead{
+    text-align: center;
+}
+#taxEntry{
+    margin: auto 41px;
+    text-align: center;
+}
+#taxOut{
+    font-size: 25px;
+    text-align: center;
+}
+#taxButton{
+    margin: auto 53px;
+    text-align: center;
+}

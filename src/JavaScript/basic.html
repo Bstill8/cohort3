@@ -35,5 +35,14 @@
             <input type="button" value="0" class="button" id="zero" onclick="calculatorNumber(0)">
             <input type="button" value="CLEAR" class="button" id="clear" onclick="calculatorClear()">
         </div>
+    </div>
+    <div id="tax">
+        <h1 id="taxHead">Canadian Taxes</h1>
+        <input type="text" placeholder="0" id="taxEntry">
+        <input type="button" value="Calculate Taxes Owed" id="taxButton" onclick="taxOutput(parseInt(document.getElementById('taxEntry').value))">
+        <p id="taxOut"></p>
+    </div>
 </div>
 </html>
+
+

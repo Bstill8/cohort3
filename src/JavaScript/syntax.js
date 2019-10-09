@@ -1,4 +1,4 @@
-import { isTSExpressionWithTypeArguments } from "@babel/types";
+import { isTSExpressionWithTypeArguments, variableDeclarator } from "@babel/types";
 
 // define attributes / variables
 //  number
@@ -47,6 +47,29 @@ const functions = {
         arr.unshift(1);
         arr[1] = 5;
         return arr;
+    },
+    loops:(a,b,c,d) => {
+        for(var i=1; i<5; i++){
+            a++;
+        }
+        while(b<4){
+            b++;
+        }
+        do{
+            c++;
+        }while(c<5);
+        return a,b,c;
+        d.forEach(function(element) {
+            console.log(element);
+        });
+    },
+    objectItem:(num, string, arr) => {
+        var ob = {
+            number: num,
+            string: string,
+            array: arr
+        }
+        return ob.number;
     }
 }
 

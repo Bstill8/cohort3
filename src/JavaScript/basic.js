@@ -62,7 +62,7 @@ function calculatorClear(){
 function taxOutput(income){
     var taxTotal = 0;
     if(income>210731){
-        taxtotal += (income-210731)*.33;
+        taxTotal += (income-210731)*.33;
         income = 210731;
     }
     if(income>147667){

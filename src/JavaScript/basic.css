@@ -61,10 +61,13 @@ body{
     text-align: center;
 }
 #taxOut{
-    font-size: 25px;
     text-align: center;
 }
 #taxButton{
     margin: auto 53px;
+    text-align: center;
+}
+.TaxOut{
+    font-size: 25px;
     text-align: center;
 }

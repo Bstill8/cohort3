@@ -1,19 +1,39 @@
+<!DOCTYPE html>
+<link href="basic.css" rel="stylesheet">
 <script src="basic.js"></script>
-<style>
-    h1 {
-        color: green;
-    }
-    body{
-        background-color: rgb(62, 192, 175)
-    }
-</style>
+<title>Basic</title>
+<html>
+<div id="top">
+    <h1 id ='header' onmouseenter = "headerchange(currentheader)">Hello World from HTML</h1>
 
-<h1 id ='header' onmouseenter = "headerchange(currentheader)">Hello World from HTML</h1>
-
-<input type = "text" id="12"  placeholder= "0">
-<br>
-<button onclick="clickevent()">Push Me</button>
-
+    <input type = "text" id="12"  placeholder= "0">
+    <br>
+    <button onclick="clickevent()">Push Me</button>
+    <p id ="11" style = "color: orange; font-family: sans-serif;"></p>
+</div>
 <script>console.log("Hello World from inline JavaScript")</script>
 
-<p id ="11" style = "color: orange; font-family: sans-serif;"></p>
+<div id="containter">
+    <div id="calculator">
+        <h1 id="calcHead">My Calculator</h1>
+        <input type="text" value="0" id='calcField'>
+        <div id="buttons">
+            <input type="button" value="1" class="button" id="1" onclick="calculatorNumber(1)">
+            <input type="button" value="2" class="button" id="2" onclick="calculatorNumber(2)">
+            <input type="button" value="3" class="button" id="3" onclick="calculatorNumber(3)">
+            <input type="button" value="+" class="button" id="plus">
+            <input type="button" value="-" class="button" id="minus">
+            <input type="button" value="4" class="button" id="4" onclick="calculatorNumber(4)">
+            <input type="button" value="5" class="button" id="5" onclick="calculatorNumber(5)">
+            <input type="button" value="6" class="button" id="6" onclick="calculatorNumber(6)">
+            <input type="button" value="*" class="button" id="multipy">
+            <input type="button" value="/" class="button" id="divide">
+            <input type="button" value="7" class="button" id="7" onclick="calculatorNumber(7)">
+            <input type="button" value="8" class="button" id="8" onclick="calculatorNumber(8)">
+            <input type="button" value="9" class="button" id="9" onclick="calculatorNumber(9)">
+            <input type="button" value="ENTER" class="button" id="ENTER">
+            <input type="button" value="0" class="button" id="zero" onclick="calculatorNumber(0)">
+            <input type="button" value="CLEAR" class="button" id="clear">
+        </div>
+</div>
+</html>

@@ -26,3 +26,10 @@ function headerchange(name){
         currentheader = "Hello World from HTML";
     }
 }
+function calculatorNumber(num){
+    console.log(document.getElementById('calcField').value);
+    document.getElementById('calcField').value = document.getElementById('calcField').value + num;
+}
+function calculatorOperation(op){
+    
+}

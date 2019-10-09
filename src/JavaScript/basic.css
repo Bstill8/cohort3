@@ -1,0 +1,50 @@
+h1 {
+    color: green;
+}
+body{
+    background-color: rgb(62, 192, 175);
+}
+#top{
+    text-align: center;
+}
+#containter{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+#calculator{
+    grid-column: 2;
+    background-color: gray;
+    margin: 0 auto;
+    width: 250px;
+}
+#calcHead{
+    text-align: center;
+    margin:0 auto;
+}
+#calcField{
+    width: 176px;
+    height: 25px;
+    text-align: center;
+    margin: 0 35px;
+}
+#buttons{
+    margin: 0px 35px;
+    width: 180px;
+    height: 180px;
+}
+.button{
+    width: 32px;
+    height: 34px;
+    margin: 2px 0px;
+}
+#zero{
+    margin: 2px 36px;
+}
+#ENTER{
+    width: 68px; 
+}
+#clear{
+    width: 68px;
+
+}

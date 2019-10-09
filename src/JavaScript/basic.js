@@ -30,6 +30,29 @@ function calculatorNumber(num){
     console.log(document.getElementById('calcField').value);
     document.getElementById('calcField').value = document.getElementById('calcField').value + num;
 }
+var currentop;
+var lastentry;
 function calculatorOperation(op){
+    currentop = op;
+    lastentry = document.getElementById('calcField').value;
+    document.getElementById('calcField').value = 0;
+}
+function calculatorEnter(){
+    if(currentop == '+'){
+        document.getElementById('calcField').value = parseInt(lastentry) + parseInt(document.getElementById('calcField').value);
+    }
+    if(currentop == '-'){
+        document.getElementById('calcField').value = parseInt(lastentry) - parseInt(document.getElementById('calcField').value);
+    }
+    if(currentop == '*'){
+        document.getElementById('calcField').value = parseInt(lastentry) * parseInt(document.getElementById('calcField').value);
+    }
+    if(currentop == '/'){
+        document.getElementById('calcField').value = parseInt(lastentry) / parseInt(document.getElementById('calcField').value);
+    }
     
+}
+function calculatorClear(){
+    lastentry = 0;
+    document.getElementById('calcField').value = 0;
 }

@@ -160,18 +160,26 @@ html {
     font-size: 25px;
     text-align: center;
 }
+.arrdictheader{
+    font-size: 30px;
+    color: black;
+}
 #Dictionary{
 
     grid-column: 2;
     grid-row: 4;
+    height: 200px;
     width: 400px;
+    border: solid;
     border-width: 2px;
     border-color: black;
 }
 #Array{
     grid-column: 2;
     grid-row: 3;
+    height: 200px;
     width: 400px;
+    border: solid;
     border-width: 2px;
     border-color: black;
 }

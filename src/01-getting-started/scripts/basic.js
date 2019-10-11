@@ -82,5 +82,38 @@ function taxOutput(income){
     }
     taxTotal += income * .15;
     document.getElementById('taxOut').innerHTML = "$" + Math.round(taxTotal*100)/100;
+}
+//Working with arrays functions
+var arr= [];
+function addNumber(num){
+    if(isNaN(num) || num == ''){
+        document.getElementById('arrMessage').innerHTML = "Input is not a valid number";
+    }else{
+        arr.push(num);
+        document.getElementById('arrMessage').innerHTML = "number added";
+        document.getElementById('arrText').value = "";
+    }
+}
+function Show(){
+    var show = '';
+    for(i=0; i<arr.length; i++){
+        show += arr[i] + ",";
+    }
+    document.getElementById('arrMessage').innerHTML = show;
+}
+function Total(){
+    var total=0;
+    for(i=0; i<arr.length; i++){
+        total += parseFloat(arr[i]);
+    }
+    document.getElementById('arrMessage').innerHTML = total;
+}
+function Clear(){
+    arr = [];
+    document.getElementById('arrMessage').innerHTML = "Array Cleared";
+    document.getElementById('arrText').value = "";
+}
+//Working with dictionaries
+const provinces = {
     
 }

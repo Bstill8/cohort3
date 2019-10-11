@@ -129,18 +129,18 @@
             <p id="taxOut" class ="TaxOut"></p>
         </div>
         <div id="Dictionary">
-                <h1 class="arrdictheader">Working with Arrays</h1>
+                <h1 class="arrdictheader">Working with Dictionaries</h1>
                 <input type="text" id="dictText"> <br>
                 <input type="button" id="Lookup" value="Lookup"> <br><br>
                 <p id="dictMessage" style="color: black">Message Area</p>
         </div>
         <div id="Array">
-            <h1 class="arrdictheader">Working with Dictionaries</h1>
+            <h1 class="arrdictheader">Working with Arrays</h1>
             <input type="text" id="arrText"> <br>
-            <input type="button" id="Add" value="Add">
-            <input type="button" id="Show" value="Show">
-            <input type="button" id="Total" value="Total">
-            <input type="button" id="Clear" value="Clear"> <br><br>
+            <input type="button" id="Add" value="Add" onclick="addNumber(document.getElementById('arrText').value)">
+            <input type="button" id="Show" value="Show" onclick="Show()">
+            <input type="button" id="Total" value="Total" onclick="Total()">
+            <input type="button" id="Clear" value="Clear" onclick="Clear()"> <br><br>
             <p id="arrMessage" style="color: black">Message Area</p>
         </div>
     </div>

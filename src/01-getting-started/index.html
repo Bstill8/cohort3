@@ -5,6 +5,7 @@
  -->
 
 <!DOCTYPE html>
+<script src="scripts/basic.js"></script>
 <html lang="en">
 
 <head>
@@ -95,7 +96,43 @@
         <input id="idNumber" type="number"> is a <span id="idNumberSize">unknown</span> number?
         <p id="idNumberSizexx"></p>
     </div>
-
+    <!-- compentency 100 work ---------------------------------------- -->
+    
+    <div id="containter">
+        <div id="calculator">
+            <h1 id="calcHead">My Calculator</h1>
+            <input type="text" value="0" id='calcField'>
+            <div id="buttons">
+                <input type="button" value="1" class="button" id="1" onclick="calculatorNumber(1)">
+                <input type="button" value="2" class="button" id="2" onclick="calculatorNumber(2)">
+                <input type="button" value="3" class="button" id="3" onclick="calculatorNumber(3)">
+                <input type="button" value="+" class="button" id="plus" onclick="calculatorOperation('+')">
+                <input type="button" value="-" class="button" id="minus" onclick="calculatorOperation('-')">
+                <input type="button" value="4" class="button" id="4" onclick="calculatorNumber(4)">
+                <input type="button" value="5" class="button" id="5" onclick="calculatorNumber(5)">
+                <input type="button" value="6" class="button" id="6" onclick="calculatorNumber(6)">
+                <input type="button" value="*" class="button" id="multipy" onclick="calculatorOperation('*')">
+                <input type="button" value="/" class="button" id="divide" onclick="calculatorOperation('/')">
+                <input type="button" value="7" class="button" id="7" onclick="calculatorNumber(7)">
+                <input type="button" value="8" class="button" id="8" onclick="calculatorNumber(8)">
+                <input type="button" value="9" class="button" id="9" onclick="calculatorNumber(9)">
+                <input type="button" value="ENTER" class="button" id="ENTER" onclick="calculatorEnter()">
+                <input type="button" value="0" class="button" id="zero" onclick="calculatorNumber(0)">
+                <input type="button" value="CLEAR" class="button" id="clear" onclick="calculatorClear()">
+            </div>
+        </div>
+        <div id="tax">
+            <h1 id="taxHead">Canadian Taxes</h1>
+            <input type="text" placeholder="0" id="taxEntry">
+            <input type="button" value="Calculate Taxes Owed" id="taxButton" onclick="taxOutput(parseInt(document.getElementById('taxEntry').value))">
+            <p class="TaxOut">Taxes Owed:</p>
+            <p id="taxOut" class ="TaxOut"></p>
+        </div>
+        <div id="Dictionary">
+        </div>
+        <div id="Array">
+        </div>
+    </div>
     <!-- Footer -->
     <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
         <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>

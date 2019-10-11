@@ -11,7 +11,7 @@ body{
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 #calculator{
     align-self: center;
@@ -80,4 +80,20 @@ body{
 .TaxOut{
     font-size: 25px;
     text-align: center;
+}
+#Dictionary{
+    column-span: 1.5;
+    grid-column: 1;
+    grid-row: 3;
+    width: 400px;
+    border-width: 2px;
+    border-color: black;
+}
+#Array{
+    column-span: 1.5;
+    grid-column: 3;
+    grid-row: 3;
+    width: 400px;
+    border-width: 2px;
+    border-color: black;
 }

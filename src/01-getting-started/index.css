@@ -76,3 +76,102 @@ html {
         min-height: 400px;
     }
 }
+/*competency 100 exercise*/
+#top{
+    text-align: center;
+}
+#containter{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+#calculator{
+    align-self: center;
+    justify-self: center;
+    grid-column: 2;
+    background-color: gray;
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+
+}
+#calcHead{
+    color: green;
+    text-align: center;
+    margin:0 auto;
+    border-bottom: solid;
+    border-color: black;
+    margin-bottom: 4px;
+}
+#calcField{
+    width: 181px;
+    height: 25px;
+    text-align: center;
+    margin: 0 35px;
+}
+#buttons{
+    margin: 0px 35px;
+    width: 185px;
+    height: 180px;
+}
+.button{
+    width: 32px;
+    height: 34px;
+    margin: 2px 0px;
+}
+#zero{
+    margin: 2px 37px;
+}
+#ENTER{
+    width: 69px; 
+}
+#clear{
+    width: 69px;
+    margin-left: 1px;
+}
+#tax{
+    text-align: center;
+    width: 250px;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+    grid-row: 2;
+    grid-column: 2;
+}
+#taxHead{
+    text-align: center;
+}
+#taxEntry{
+    width: 180px;
+}
+#taxOut{
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+}
+#taxButton{
+    margin: 0 12px;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+}
+.TaxOut{
+    font-size: 25px;
+    text-align: center;
+}
+#Dictionary{
+
+    grid-column: 2;
+    grid-row: 4;
+    width: 400px;
+    border-width: 2px;
+    border-color: black;
+}
+#Array{
+    grid-column: 2;
+    grid-row: 3;
+    width: 400px;
+    border-width: 2px;
+    border-color: black;
+}

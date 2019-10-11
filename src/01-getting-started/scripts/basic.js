@@ -1,5 +1,5 @@
 //First exercise functions
-export{size, clickevent, headerchange}
+//export{size, clickevent, headerchange}
 console.log("Hello World from basic.js")
 let currentheader = "Hello World from HTML"
 function size(int){
@@ -29,9 +29,8 @@ function headerchange(name){
     }
 }
 //Calculator functions
-export{calculatorNumber, calculatorOperation, calculatorEnter, calculatorClear}
+//export{calculatorNumber, calculatorOperation, calculatorEnter, calculatorClear}
 function calculatorNumber(num){
-    console.log(document.getElementById('calcField').value);
     document.getElementById('calcField').value = document.getElementById('calcField').value + num;
 }
 var currentop;
@@ -62,7 +61,7 @@ function calculatorClear(){
     document.getElementById('calcField').value = 0;
 }
 //Tax Calculator functions
-export{taxOutput}
+//export{taxOutput}
 function taxOutput(income){
     var taxTotal = 0;
     if(income>210731){

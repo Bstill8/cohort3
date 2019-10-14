@@ -1,33 +1,3 @@
-//First exercise functions
-//export{size, clickevent, headerchange}
-console.log("Hello World from basic.js")
-let currentheader = "Hello World from HTML"
-function size(int){
-    if(int>=20){
-        return "large";
-    }
-    if(int>=10 && int<20){
-        return "med";
-    }
-    return "small";
-}
-function clickevent() {
-    console.log("I'm in the click button event")
-    var x = 1 + parseInt(document.getElementById(12).value);
-    console.log(x);
-    var int = parseInt(document.getElementById(12).value);
-    document.getElementById(11).innerHTML = size(int);
-}
-function headerchange(name){
-    if(name == "Hello World from HTML"){
-        document.getElementById('header').innerHTML = "Hello from Canada";
-        currentheader = "Hello from Canada";
-    }
-    if(name == "Hello from Canada"){
-        document.getElementById('header').innerHTML = "Hello World from HTML";
-        currentheader = "Hello World from HTML";
-    }
-}
 //Calculator functions
 //export{calculatorNumber, calculatorOperation, calculatorEnter, calculatorClear}
 function calculatorNumber(num){
@@ -115,5 +85,26 @@ function Clear(){
 }
 //Working with dictionaries
 const provinces = {
-    
+    AB: "Alberta",
+    BC: "British Columbia",
+    SK: "Saskatchewan",
+    MB: "Manitoba",
+    ON: "Ontario",
+    QC: "Quebec",
+    PEI: "Prince Edward Island",
+    NB: "New Brunswick",
+    NS: "Nova Scotia",
+    NL: "Newfoundland",
+    YT: "Yukon",
+    NT: "Northwest Territories",
+    NU: "Nunavut"  
+}
+function Lookup(Abrev){
+    var noPunctuation = Abrev.replace(/[.]/g,"");
+    var temp = noPunctuation.toUpperCase();
+    if(!provinces.hasOwnProperty(temp)){
+        document.getElementById('dictMessage').innerHTML = "Enter a valid province/territory abbreviation";
+        return 0;
+    }
+    document.getElementById('dictMessage').innerHTML = provinces[temp];
 }

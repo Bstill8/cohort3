@@ -126,4 +126,4 @@ function Lookup(Abrev){
     }
     document.getElementById('dictMessage').innerHTML = provinces[temp];
 }
-export {functions, calculatorClear, calculatorEnter, calculatorNumber, calculatorOperation, taxOutput, addNumber, Show, Total, Clear, provinces, Lookup}
+export {functions, calculatorClear, calculatorEnter, calculatorNumber, calculatorOperation, taxOutput, addNumber, Show, Total, Clear, provinces, Lookup};

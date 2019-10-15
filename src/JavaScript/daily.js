@@ -30,3 +30,50 @@ assertEquals(1,2);
 assertEquals(2,2);
 assertEquals("2",2);
 assertEquals("This value","This value");
+
+//makeEmailArr october
+
+//Prepare for array work
+export function forloop(a,b,c){
+    var arr = [];
+    for(var i = 0; i<arguments.length; i++){
+        arr[i] = arguments[i];
+    }
+    return arr;
+}
+export function forwhile(a,b,c){
+    var arr = [];
+    var i = 0;
+    while(i<arguments.length){
+        arr[i] = arguments[i];
+        i++;
+    }
+    return arr;
+}
+export function dowhile(a,b,c){
+    var arr = [];
+    var i = 0;
+    do{
+        arr[i] = arguments[i];
+        i++;
+    }while(i<arguments.length);
+    return arr;
+}
+export function forin(a,b,c){
+    var i = 0;
+    var arr = [];
+    for(i in arguments){
+        arr[i] = arguments[i];
+    }
+    return arr;
+}
+export function forof(a,b,c){
+    var arr= [];
+    var i = 0;
+    var x;
+    for(x of arguments){
+        arr[i] = x;
+        i++;
+    }
+    return arr;
+}

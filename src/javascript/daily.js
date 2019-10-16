@@ -1,5 +1,7 @@
+import { forInStatement } from "@babel/types";
+
 /*	
-	Write the function that will create this output:
+    Write the function that will create this output:
 
 *** the two values are not the same:
     p1--> a
@@ -31,8 +33,17 @@ assertEquals(2,2);
 assertEquals("2",2);
 assertEquals("This value","This value");
 
-//makeEmailArr october
+//makeEmailArr october 9
+export const functions = {
+    makeEmailArr: (name) => {
 
+        return name[0].toLowerCase()+'.'+name[1].toLowerCase() + '@evolveu.ca';
+    },
+    //makeEmailObj october 11
+    makeEmailObj: (name) => {
+        return name.fname.toLowerCase()+"."+name.lname.toLowerCase()+"@evolveu.ca";
+    }
+}
 //Prepare for array work
 export function forloop(a,b,c){
     var arr = [];

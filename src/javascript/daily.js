@@ -1,5 +1,19 @@
-import { forInStatement } from "@babel/types";
 
+//more array work
+export function slice(bee,a,b){
+    return bee.slice(a,b);
+}
+export function splice(bee,I,R,...args){
+    var gee = bee.slice();
+    gee.splice(I,R,...args);
+    return gee;
+}
+export function forEFunction(arr){
+    return arr*2;
+}
+export function SFunction(item){
+    return item*2;
+}
 /*	
     Write the function that will create this output:
 

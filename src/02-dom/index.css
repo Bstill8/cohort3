@@ -1,0 +1,25 @@
+#container {
+    text-align: center;
+}
+#main{
+    display: inline-block;
+    text-align: center;
+    height: 400px;
+    width: 400px;
+    border-style: solid;
+    border-color: black;
+}
+h1 {
+    font-size: 60px;
+}
+ol {
+    align-self: center;
+    text-align: start;
+    font-size: 20px;
+}
+li{
+    margin-left: 100px;
+}
+p{
+    font-size: 20px;
+}

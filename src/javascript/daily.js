@@ -9,10 +9,26 @@ export function splice(bee,I,R,...args){
     return gee;
 }
 export function forEFunction(arr){
-    return arr*2;
+    var newArr = [];
+    var sFunction = (item, index) => {newArr[index] =item*2}
+    arr.forEach(sFunction);
+    return newArr;
 }
-export function SFunction(item){
-    return item*2;
+export function mapFunction(arr, Multi){
+    const multiply = (element) => {return element*Multi;}
+    return arr.map(multiply);
+}
+export function reduceFunction(arr){
+    const sum = (total, currentVal) => {return total + currentVal;}
+    return arr.reduce(sum);
+}
+export function filterFunction(arr, num){
+    const filter = (element) => {return element >= num}
+    return arr.filter(filter);
+}
+export function sortFunction(arr){
+    const sorter = (a,b) => {return b-a}
+    return arr.sort(sorter);
 }
 /*	
     Write the function that will create this output:

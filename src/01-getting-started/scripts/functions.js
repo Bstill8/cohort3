@@ -15,45 +15,32 @@ const functions = {
     subtract: (num1, num2) => {
         return num1 - num2;
     }
-
-    
 };
-function calculatorNumber(num){
-    document.getElementById('calcField').value = document.getElementById('calcField').value + num;
-}
-var currentop;
-var lastentry;
+//Calculator functions
 function calculatorOperation(op){
-    currentop = op;
-    lastentry = document.getElementById('calcField').value;
-    document.getElementById('calcField').value = 0;
+    return op;   
 }
-function calculatorEnter(){
-    if(currentop == '+'){
-        document.getElementById('calcField').value = parseInt(lastentry) + parseInt(document.getElementById('calcField').value);
+function calculatorEnter(num, current, last){
+    if(current == '+'){
+        return parseInt(last) + parseInt(num);
     }
-    if(currentop == '-'){
-        document.getElementById('calcField').value = parseInt(lastentry) - parseInt(document.getElementById('calcField').value);
+    if(current == '-'){
+        return parseInt(last) - parseInt(num);
     }
-    if(currentop == '*'){
-        document.getElementById('calcField').value = parseInt(lastentry) * parseInt(document.getElementById('calcField').value);
+    if(current == '*'){
+        return parseInt(last) * parseInt(num);
     }
-    if(currentop == '/'){
-        document.getElementById('calcField').value = parseInt(lastentry) / parseInt(document.getElementById('calcField').value);
+    if(current == '/'){
+        return parseInt(last) / parseInt(num);
     }
 
 }
 
-function calculatorClear(){
-    lastentry = 0;
-    document.getElementById('calcField').value = 0;
-}
 //Tax Calculator functions
-//export{taxOutput}
 function taxOutput(income){
     var taxTotal = 0;
     if(income>210731){
-        taxTotal += (income-210731)*.33;
+        taxTotal += (income - 210731)*.33;
         income = 210731;
     }
     if(income>147667){
@@ -69,7 +56,7 @@ function taxOutput(income){
         income = 47630;
     }
     taxTotal += income * .15;
-    document.getElementById('taxOut').innerHTML = "$" + Math.round(taxTotal*100)/100;
+    return taxTotal;
 }
 //Working with arrays functions
 var arr= [];
@@ -117,7 +104,7 @@ const provinces = {
     NT: "Northwest Territories",
     NU: "Nunavut"  
 }
-function Lookup(Abrev){
+function lookup(Abrev){
     var noPunctuation = Abrev.replace(/[.]/g,"");
     var temp = noPunctuation.toUpperCase();
     if(!provinces.hasOwnProperty(temp)){
@@ -126,4 +113,5 @@ function Lookup(Abrev){
     }
     document.getElementById('dictMessage').innerHTML = provinces[temp];
 }
-export {functions, calculatorClear, calculatorEnter, calculatorNumber, calculatorOperation, taxOutput, addNumber, Show, Total, Clear, provinces, Lookup};
+export default functions;
+export {calculatorEnter, calculatorOperation, taxOutput, addNumber, Show, Total, Clear, provinces, lookup}

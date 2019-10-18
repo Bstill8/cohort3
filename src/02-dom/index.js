@@ -1,6 +1,6 @@
-document.getElementById("main").addEventListener("click", idfunction);
-document.getElementById("Show").addEventListener("click", show);
-document.getElementById("Add").addEventListener("click", add);
+main.addEventListener("click", idfunction);
+Show.addEventListener("click", show);
+Add.addEventListener("click", add);
 function idfunction(event){
     console.log(event.target.id)
 }

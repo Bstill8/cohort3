@@ -59,34 +59,27 @@ function taxOutput(income){
     return taxTotal;
 }
 //Working with arrays functions
-var arr= [];
+
 function addNumber(num){
     if(isNaN(num) || num == ''){
-        document.getElementById('arrMessage').innerHTML = "Input is not a valid number";
+        return "Input is not a valid number";
     }else{
-        arr.push(num);
-        document.getElementById('arrMessage').innerHTML = "number added";
-        document.getElementById('arrText').value = "";
+        return "number added";
     }
 }
-function Show(){
+function Show(arry){
     var show = '';
-    for(i=0; i<arr.length; i++){
-        show += arr[i] + ",";
+    for(var i=0; i<arry.length; i++){
+        show += arry[i] + ",";
     }
-    document.getElementById('arrMessage').innerHTML = show;
+    return show;
 }
-function Total(){
+function Total(arry){
     var total=0;
-    for(i=0; i<arr.length; i++){
-        total += parseFloat(arr[i]);
+    for(var i=0; i<arry.length; i++){
+        total += parseFloat(arry[i]);
     }
-    document.getElementById('arrMessage').innerHTML = total;
-}
-function Clear(){
-    arr = [];
-    document.getElementById('arrMessage').innerHTML = "Array Cleared";
-    document.getElementById('arrText').value = "";
+    return total;
 }
 //Working with dictionaries
 const provinces = {
@@ -104,14 +97,13 @@ const provinces = {
     NT: "Northwest Territories",
     NU: "Nunavut"  
 }
-function lookup(Abrev){
+function lookup(Abrev, text){
     var noPunctuation = Abrev.replace(/[.]/g,"");
     var temp = noPunctuation.toUpperCase();
-    if(!provinces.hasOwnProperty(temp)){
-        document.getElementById('dictMessage').innerHTML = "Enter a valid province/territory abbreviation";
-        return 0;
+    if(!text.hasOwnProperty(temp)){
+        return "Enter a valid province/territory abbreviation";
     }
-    document.getElementById('dictMessage').innerHTML = provinces[temp];
+    return text[temp];
 }
 export default functions;
-export {calculatorEnter, calculatorOperation, taxOutput, addNumber, Show, Total, Clear, provinces, lookup}
+export {calculatorEnter, calculatorOperation, taxOutput, addNumber, Show, Total, provinces, lookup}

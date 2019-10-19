@@ -1,4 +1,4 @@
-import functions, {calculatorEnter, taxOutput, addNumber, Show, Total, Clear, provinces, lookup} from './functions.js';
+import functions, {calculatorEnter, taxOutput, addNumber, Show, Total, provinces, lookup} from './functions.js';
 
 // **********
 //
@@ -31,4 +31,29 @@ buttons.addEventListener('click', (() => {
 }));
 taxButton.addEventListener('click', (() => {
     document.getElementById('taxOut').innerHTML = "$" + Math.round(taxOutput(document.getElementById('taxEntry').value)*100)/100;
+    document.getElementById('tax%').innerHTML = "at " + Math.round(taxOutput(document.getElementById('taxEntry').value)*100/parseFloat(document.getElementById('taxEntry').value)) + "%";
+}));
+var arr= [];
+array.addEventListener('click', (() => {
+    if(event.target.id == 'Add'){
+        document.getElementById('arrMessage').innerHTML = addNumber(document.getElementById('arrText').value)
+        if(addNumber(document.getElementById('arrText').value) == 'number added'){
+            arr.push(document.getElementById('arrText').value);
+            document.getElementById('arrText').value = "";
+        }  
+    }
+    if(event.target.id == 'Show'){
+        document.getElementById('arrMessage').innerHTML = Show(arr);
+    }
+    if(event.target.id == 'Total'){
+        document.getElementById('arrMessage').innerHTML = Total(arr);
+    }
+    if(event.target.id == 'Clear'){
+        document.getElementById('arrMessage').innerHTML = "Array Cleared";
+        document.getElementById('arrText').value = "";
+        arr = [];
+    }
+}));
+Lookup.addEventListener('click', (() => {
+    document.getElementById('dictMessage').innerHTML = lookup(document.getElementById('dictText').value, provinces);
 }));

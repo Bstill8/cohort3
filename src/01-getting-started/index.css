@@ -174,7 +174,7 @@ html {
     border-width: 2px;
     border-color: black;
 }
-#Array{
+#array{
     grid-column: 2;
     grid-row: 3;
     height: 200px;

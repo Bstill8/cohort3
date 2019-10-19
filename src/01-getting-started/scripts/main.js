@@ -17,21 +17,23 @@ buttons.addEventListener('click', (() => {
         currentop = event.target.value;
         lastentry = document.getElementById('calcField').value;
         document.getElementById('calcField').value = 0;
-        console.log(currentop);
     }
     if(event.target.id == 'ENTER'){
-        console.log('enter')
         document.getElementById('calcField').value = calculatorEnter(document.getElementById('calcField').value, currentop, lastentry);
     }
     if(event.target.id == 'clear'){
-        console.log('clear')
         lastentry = 0;
         document.getElementById('calcField').value = 0;
     }
 }));
 taxButton.addEventListener('click', (() => {
-    document.getElementById('taxOut').innerHTML = "$" + Math.round(taxOutput(document.getElementById('taxEntry').value)*100)/100;
-    document.getElementById('tax%').innerHTML = "at " + Math.round(taxOutput(document.getElementById('taxEntry').value)*100/parseFloat(document.getElementById('taxEntry').value)) + "%";
+    if(taxOutput(document.getElementById('taxEntry').value) == "Please enter a positive number"){
+        document.getElementById('taxOut').innerHTML = taxOutput(document.getElementById('taxEntry').value);
+        document.getElementById('tax%').innerHTML = "N/A";  
+    }else{
+        document.getElementById('taxOut').innerHTML = '$' + taxOutput(document.getElementById('taxEntry').value);
+        document.getElementById('tax%').innerHTML = "at " + Math.round(taxOutput(document.getElementById('taxEntry').value)*100/parseFloat(document.getElementById('taxEntry').value)) + "%";
+    }
 }));
 var arr= [];
 array.addEventListener('click', (() => {

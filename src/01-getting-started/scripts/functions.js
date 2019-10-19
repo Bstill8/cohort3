@@ -17,9 +17,6 @@ const functions = {
     }
 };
 //Calculator functions
-function calculatorOperation(op){
-    return op;   
-}
 function calculatorEnter(num, current, last){
     if(current == '+'){
         return parseInt(last) + parseInt(num);
@@ -39,6 +36,9 @@ function calculatorEnter(num, current, last){
 //Tax Calculator functions
 function taxOutput(income){
     var taxTotal = 0;
+    if(income < 0){
+        return "Please enter a positive number"
+    }
     if(income>210731){
         taxTotal += (income - 210731)*.33;
         income = 210731;
@@ -56,7 +56,7 @@ function taxOutput(income){
         income = 47630;
     }
     taxTotal += income * .15;
-    return taxTotal;
+    return Math.round(taxTotal*100)/100;
 }
 //Working with arrays functions
 
@@ -70,7 +70,10 @@ function addNumber(num){
 function Show(arry){
     var show = '';
     for(var i=0; i<arry.length; i++){
-        show += arry[i] + ",";
+        show += arry[i]
+        if(i<arry.length - 1){
+            show += ",";
+        }
     }
     return show;
 }
@@ -106,4 +109,4 @@ function lookup(Abrev, text){
     return text[temp];
 }
 export default functions;
-export {calculatorEnter, calculatorOperation, taxOutput, addNumber, Show, Total, provinces, lookup}
+export {functions, calculatorEnter, taxOutput, addNumber, Show, Total, provinces, lookup}

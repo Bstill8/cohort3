@@ -1,5 +1,12 @@
-
-//more array work
+//loopStaff
+export function loopStaff(data){
+    var email = [];
+    for(var i = 0; i<data.length; i++){
+        email[i] = 
+    }
+    return 0;
+}
+//more array work October 16-17
 export function slice(bee,a,b){
     return bee.slice(a,b);
 }

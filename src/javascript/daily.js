@@ -1,10 +1,10 @@
-//loopStaff
+//loopStaff October 21
 export function loopStaff(data){
     var email = [];
     for(var i = 0; i<data.length; i++){
-        email[i] = 
+        email[i] = data[i].fname.toLowerCase() + '.' + data[i].lname.toLowerCase() + '@evolveu.ca';
     }
-    return 0;
+    return email;
 }
 //more array work October 16-17
 export function slice(bee,a,b){

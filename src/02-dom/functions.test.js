@@ -1,4 +1,4 @@
-import {add, show} from './functions'
+import {add, show, addCard} from './functions'
 test('test the add function with show function', () => {
     var addTester = document.createElement('ol');
     document.body.appendChild(addTester);
@@ -11,9 +11,17 @@ test('test the add function with show function', () => {
     expect(show(addTester)).toEqual(['4','5','6','7']);
 
 });
+function cardCounter(){
+
+    return ;
+}
 test('test add card function', () => {
-    function cardCounter(){
-        return 0;
-        
-    }
-})
+    let testDiv = document.createElement('div');
+    document.body.appendChild(testDiv);
+    testDiv.id = "left";
+    expect(cardCounter()).toEqual();
+});
+test('', () => {});
+test('', () => {});
+test('', () => {});
+test('', () => {});

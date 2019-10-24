@@ -9,14 +9,38 @@ export function show(){
 }
 var itemNumber = 4;
 export function add(){
-    var newItem = document.createElement("li");
-    var text = document.createTextNode("Item " + itemNumber.toString());
+    let newItem = document.createElement("li");
+    let text = document.createTextNode("Item " + itemNumber.toString());
     newItem.appendChild(text);
     newItem.setAttribute('num', itemNumber.toString())
     list.appendChild(newItem);
     itemNumber ++;
 }
-var cardNumber = 1;
+var cardNumber = 0;
 export function addCard(){
     cardNumber ++;
+    //create left card
+    let newCard = document.createElement('div');
+    let text = document.createTextNode('Card ' + cardNumber.toString())
+    let addBefore = document.createElement('button');
+    let addAfter = document.createElement('button');
+    let delet = document.createElement('button');
+    addBefore.value = "Add Before";
+    addAfter.value = "Add After";
+    delet.value = "Delete";
+    addBefore.className = "add before"
+    addAfter.className = "add after"
+    delet.className = "delete";
+    newCard.className = 'Lcard';
+    newCard.setAttribute("card", cardNumber.toString());
+    newCard.appendChild(text);
+    newCard.appendChild(addBefore);
+    newCard.appendChild(addAfter);
+    newCard.appendChild(delet);
+    //create right card
+    let rightCard = document.createElement('div');
+    let rText = document.createTextNode("Right Side");
+    rightCard.className = "Rcard";
+    rightCard.appendChild(rText);
+    return [newCard, rightCard];
 }

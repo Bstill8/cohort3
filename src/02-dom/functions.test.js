@@ -1,18 +1,19 @@
 import {add, show} from './functions'
-test('test the add function', () => {
-    document.body.innerHTML = 
-'<div id="container">'+
-    '<div id="main">'
-        '<h1 id="header">Basic DOM</h1>'+
-        '<p id="list title">This is a list of stuff</p>'+
-        '<ol id="list">'+
-            '<li id="li1">Item 1</li>'+
-            '<li id="li2">Item 2</li>'+
-            '<li id="li3">Item 3</li>'+
-        '</ol>'+
-        '<input type="button" value="Show" id="Show">'+
-        '<input type="button" value="Add" id="Add">'+
-    '</div>'+
-'</div>';
+test('test the add function with show function', () => {
+    var addTester = document.createElement('ol');
+    document.body.appendChild(addTester);
+    addTester.id = 'list';
+    add();
+    add();
+    expect(show(addTester)).toEqual(['4','5']);
+    add();
+    add();
+    expect(show(addTester)).toEqual(['4','5','6','7']);
 
+});
+test('test add card function', () => {
+    function cardCounter(){
+        return 0;
+        
+    }
 })

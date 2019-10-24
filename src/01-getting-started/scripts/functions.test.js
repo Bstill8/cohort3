@@ -13,6 +13,10 @@ test('Does that add function work?', () => {
     expect(functions.add(1,2)).toBe(3);
     expect(functions.add(101,202)).toBe(303);
 });
+test('Does the subtract function work', () => {
+    expect(functions.subtract(2,6)).toBe(-4);
+    expect(functions.subtract(10,3)).toBe(7);
+})
 test('Check the calculator', () => {
     expect(calculatorEnter(12,'+', 2)).toEqual(14);
     expect(calculatorEnter('13', '-', '1')).toEqual(-12);

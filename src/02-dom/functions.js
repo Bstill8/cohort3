@@ -1,17 +1,22 @@
-
+//first exercise
 export function show(){
-    for(var i = 0; i<document.getElementById("list").children.length; i++){
-        console.log(document.getElementById("list").children[i].innerHTML)
+    let sarr = [];
+    for(var i = 0; i<list.children.length; i++){
+        sarr[i] = list.children[i].getAttribute('num');
+        console.log(list.children[i].innerHTML)
     }
+    return sarr;
 }
-
+var itemNumber = 4;
 export function add(){
     var newItem = document.createElement("li");
     var text = document.createTextNode("Item " + itemNumber.toString());
     newItem.appendChild(text);
-    document.getElementById("list").appendChild(newItem);
+    newItem.setAttribute('num', itemNumber.toString())
+    list.appendChild(newItem);
     itemNumber ++;
 }
+var cardNumber = 1;
 export function addCard(){
-    
+    cardNumber ++;
 }

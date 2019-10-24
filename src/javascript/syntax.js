@@ -1,5 +1,3 @@
-import { isTSExpressionWithTypeArguments, variableDeclarator } from "@babel/types";
-
 // define attributes / variables
 //  number
 //  string
@@ -52,16 +50,16 @@ const functions = {
         for(var i=1; i<5; i++){
             a++;
         }
-        while(b<4){
+        while(b<5){
             b++;
         }
         do{
             c++;
         }while(c<5);
-        return a,b,c;
-        d.forEach(function(element) {
-            console.log(element);
+        d.forEach(function(a, i) {
+            d[i] = a*2;
         });
+        return [a,b,c,d];
     },
     objectItem:(num, string, arr) => {
         var ob = {

@@ -44,3 +44,7 @@ export function addCard(){
     rightCard.appendChild(rText);
     return [newCard, rightCard];
 }
+export function mainAdd(){
+    let card = addCard();
+    return;
+}

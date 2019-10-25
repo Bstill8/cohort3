@@ -1,4 +1,4 @@
-import {add, show, addCard, mainAdd} from './functions'
+import {addBefore, add, show, mainAdd} from './functions'
 test('test the add function with show function', () => {
     var addTester = document.createElement('ol');
     document.body.appendChild(addTester);
@@ -11,38 +11,43 @@ test('test the add function with show function', () => {
     expect(show(addTester)).toEqual(['4','5','6','7']);
 
 });
-function cardCounter(){
-    let testArr = [];
-    testArr[0] = 1;
-    testArr[6] = 2;
-    testArr.a = 3;
-    let counter = 0
-    for (let x in testArr){
+function cardCounter(div){
+    let counter = 0;
+    let arr = [];
+    for(let i = 0; i < div.children.length; i++){
+        arr[i] = div.children[i].getAttribute('card');
         counter ++;
     }
-    return [counter, testArr];
+    return [counter, arr];
 }
+let leftDiv = document.createElement('div');
+let rightDiv = document.createElement('div');
+document.body.appendChild(leftDiv)
+document.body.appendChild(rightDiv);
+leftDiv.id = "left";
+rightDiv.id = "right";
+
 test('test add card function', () => {
-    let leftDiv = document.createElement('div');
-    let rightDiv = document.createElement('div');
-    document.body.appendChild(leftDiv)
-    document.body.appendChild(rightDiv);
-    leftDiv.id = "left";
-    rightDiv.id = "right";
-    expect(cardCounter()).toEqual();
+    let ACFl = leftDiv;
+    expect(cardCounter(ACFl)).toEqual([0,[]]);
 });
+
 test('test add card button', () => {
-    let leftDiv = document.createElement('div');
-    let rightDiv = document.createElement('div');
-    document.body.appendChild(leftDiv)
-    document.body.appendChild(rightDiv);
-    leftDiv.id = "left";
-    rightDiv.id = "right";
-    expect(mainAdd()).toEqual();
+    let ACBl = leftDiv;
+    mainAdd();
+    expect(cardCounter(ACBl)).toEqual([1,['1']]);
+    mainAdd();
+    mainAdd();
+    mainAdd();
+    expect(cardCounter(ACBl)).toEqual([4,['1','2','3','4']]);
+});
+test('test add before', () => {
+    let addBLeft = leftDiv;
+    let addBRight = rightDiv;
+
 });
 test('', () => {});
 test('', () => {});
-test('', () => {});
-test('card counter', () => {
-    expect(cardCounter()).toEqual([3, [1,2,3]]);
-});
+// test('card counter', () => {
+//     expect(cardCounter()).toEqual([3, [1,2,3]]);
+// });

@@ -21,15 +21,15 @@ export function addCard(){
     cardNumber ++;
     //create left card
     let newCard = document.createElement('div');
-    let text = document.createTextNode('Card ' + cardNumber.toString())
+    let text = document.createTextNode('Card ' + cardNumber.toString());
     let addBefore = document.createElement('button');
     let addAfter = document.createElement('button');
     let delet = document.createElement('button');
     addBefore.value = "Add Before";
     addAfter.value = "Add After";
     delet.value = "Delete";
-    addBefore.className = "add before"
-    addAfter.className = "add after"
+    addBefore.className = "add before";
+    addAfter.className = "add after";
     delet.className = "delete";
     newCard.className = 'Lcard';
     newCard.setAttribute("card", cardNumber.toString());
@@ -46,5 +46,9 @@ export function addCard(){
 }
 export function mainAdd(){
     let card = addCard();
-    return;
+    document.getElementById('left').appendChild(card[0]);
+    document.getElementById('right').appendChild(card[1]);
+}
+export function addBefore(){
+    
 }

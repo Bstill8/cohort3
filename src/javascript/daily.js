@@ -1,3 +1,19 @@
+
+//loopStaff October 24
+export function loopStaffOf(staff){
+    let staffEmail = [];
+    for(let x in staff){
+        staffEmail[x] = staff[x].fname.toLowerCase() + '.' + staff[x].lname.toLowerCase() + '@evolveu.ca';
+    }
+    return staffEmail;
+}
+export function loopStaffIn(staff){
+    let staffEmail = [];
+    for(let x in staff){
+        staffEmail[x] = staff[x].fname.toLowerCase() + '.' + staff[x].lname.toLowerCase() + '@evolveu.ca';
+    }
+    return staffEmail;
+}
 //loopStaff October 21
 export function loopStaff(data){
     var email = [];

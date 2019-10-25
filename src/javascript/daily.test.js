@@ -1,4 +1,4 @@
-import {loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
+import {loopStaffMap, loopStaffForEach, loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
 const data = {
     staff: [
         { fname: "Jane", lname: "Smith", balance: 10 },
@@ -13,6 +13,26 @@ const data = {
     city: "Calgary",
     prov: "Alberta"
 };
+test('test for each', () => {
+    const staffEmail = loopStaffForEach(data.staff);
+    expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+    expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+    expect(staffEmail[4]).toEqual("noah.ho@evolveu.ca");
+    expect(staffEmail[1]).toEqual("liam.henry@evolveu.ca");
+    expect(staffEmail[5]).toEqual("william.lee@evolveu.ca");
+})
+
+ test('test map', () => {
+    const staffEmail = loopStaffMap(data.staff);
+    expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");
+    expect(staffEmail[6]).toEqual("benjamin.amis@evolveu.ca");
+    expect(staffEmail[4]).toEqual("noah.ho@evolveu.ca");
+    expect(staffEmail[1]).toEqual("liam.henry@evolveu.ca");
+    expect(staffEmail[5]).toEqual("william.lee@evolveu.ca");
+ })
+
+
+
 //loopStaff October 24
 test('test for in loop', () => {
     const staffEmail = loopStaffIn(data.staff);

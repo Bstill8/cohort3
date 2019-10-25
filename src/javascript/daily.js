@@ -1,4 +1,18 @@
 
+//loopStaff October 25
+export function loopStaffMap(staff){
+    let staffEmail = [];
+    staffEmail = staff.map(x => x.fname.toLowerCase() + '.' + x.lname.toLowerCase() + '@evolveu.ca')
+    return staffEmail;
+}
+export function loopStaffForEach(staff){
+    let staffEmail = [];
+    staff.forEach(email)
+    function email(item, index, array){
+        staffEmail[index] = array[index].fname.toLowerCase() + '.' + array[index].lname.toLowerCase() + '@evolveu.ca';
+    }
+    return staffEmail;
+}
 //loopStaff October 24
 export function loopStaffOf(staff){
     let staffEmail = [];

@@ -21,18 +21,21 @@ export function addCard(){
     cardNumber ++;
     //create left card
     let newCard = document.createElement('div');
-    let text = document.createTextNode('Card ' + cardNumber.toString());
+    let text = document.createElement('p');
+    let textN = document.createTextNode('Card ' + cardNumber.toString());
     let addBefore = document.createElement('button');
     let addAfter = document.createElement('button');
     let delet = document.createElement('button');
-    addBefore.value = "Add Before";
-    addAfter.value = "Add After";
-    delet.value = "Delete";
-    addBefore.className = "add before";
-    addAfter.className = "add after";
+    addBefore.innerText = "Add Before";
+    addAfter.innerText = "Add After";
+    delet.innerText = "Delete";
+    text.className = "cardText";
+    addBefore.className = "addBefore";
+    addAfter.className = "addAfter";
     delet.className = "delete";
     newCard.className = 'Lcard';
-    newCard.setAttribute("card", cardNumber.toString());
+    newCard.id = 'card ' +cardNumber.toString();
+    text.appendChild(textN);
     newCard.appendChild(text);
     newCard.appendChild(addBefore);
     newCard.appendChild(addAfter);
@@ -46,9 +49,41 @@ export function addCard(){
 }
 export function mainAdd(){
     let card = addCard();
-    document.getElementById('left').appendChild(card[0]);
-    document.getElementById('right').appendChild(card[1]);
+    left.appendChild(card[0]);
+    right.appendChild(card[1]);
 }
-export function addBefore(){
-    
+export function addBefore(cardId, buttonClass){
+    console.log(cardId);
+    if(buttonClass == 'addBefore'){    
+        let node;
+        let cards = [];
+        for(let i = 0; i<left.children.length; i++){
+            if(left.children[i].id == cardId){
+                node = left.children[i];
+            }
+        }
+        cards = addCard();
+        left.insertBefore(cards[0], node);
+        right.appendChild(cards[1]);
+    }
+}
+export function addAfter(cardId, buttonClass){
+    if(buttonClass == 'addAfter'){
+        let node;
+        let cards = [];
+        for(let i = 0; i<left.children.length; i++){
+            if(left.children[i].id == cardId){
+                node = left.children[i + 1];
+            }
+        }
+        cards = addCard();
+        left.insertBefore(cards[0], node);
+        right.appendChild(cards[1]);
+    }
+}
+export function delet(cardId, buttonClass){
+        if(buttonClass == 'delete'){
+            document.getElementById(cardId).remove();
+            right.removeChild(right.lastChild);
+    }
 }

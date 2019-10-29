@@ -1,4 +1,4 @@
-import {addBefore, add, show, mainAdd} from './functions'
+import {delet, addAfter, addBefore, add, show, mainAdd, addCard} from './functions'
 test('test the add function with show function', () => {
     var addTester = document.createElement('ol');
     document.body.appendChild(addTester);
@@ -15,14 +15,14 @@ function cardCounter(div){
     let counter = 0;
     let arr = [];
     for(let i = 0; i < div.children.length; i++){
-        arr[i] = div.children[i].getAttribute('card');
+        arr[i] = div.children[i].id;
         counter ++;
     }
     return [counter, arr];
 }
 let leftDiv = document.createElement('div');
 let rightDiv = document.createElement('div');
-document.body.appendChild(leftDiv)
+document.body.appendChild(leftDiv);
 document.body.appendChild(rightDiv);
 leftDiv.id = "left";
 rightDiv.id = "right";
@@ -35,19 +35,51 @@ test('test add card function', () => {
 test('test add card button', () => {
     let ACBl = leftDiv;
     mainAdd();
-    expect(cardCounter(ACBl)).toEqual([1,['1']]);
+    expect(cardCounter(ACBl)).toEqual([1,['card 1']]);
     mainAdd();
     mainAdd();
     mainAdd();
-    expect(cardCounter(ACBl)).toEqual([4,['1','2','3','4']]);
+    expect(cardCounter(ACBl)).toEqual([4,['card 1','card 2','card 3','card 4']]);
 });
 test('test add before', () => {
     let addBLeft = leftDiv;
-    let addBRight = rightDiv;
+    mainAdd();
+    mainAdd();
+    addBLeft.addEventListener('click', (event) => {addBefore(event.target.id, 'addBefore')});
+    document.getElementById('card 2').click();
+    expect(cardCounter(addBLeft)).toEqual([3,['card 1', 'card 3', 'card 2']]);
+    mainAdd();
+    mainAdd();
+    mainAdd();
+    document.getElementById('card 4').click();
+    document.getElementById('card 1').click();
+    expect(cardCounter(addBLeft)).toEqual([8,['card 8', 'card 1', 'card 3', 'card 2','card 7', 'card 4', 'card 5', 'card 6']]);
 
 });
-test('', () => {});
-test('', () => {});
-// test('card counter', () => {
-//     expect(cardCounter()).toEqual([3, [1,2,3]]);
-// });
+test('test add after', () => {
+    let addAleft = leftDiv;
+    addAleft.addEventListener('click', addAfter)
+    mainAdd();
+    mainAdd();
+    mainAdd();
+    mainAdd();
+    document.getElementById('card 1').click();
+    document.getElementById('card 4').click();
+    document.getElementById('card 6').click();
+    document.getElementById('card 4').click();
+    expect(cardCounter(addAleft)).toEqual([8,['card 1', 'card 5', 'card 2', 'card 3', 'card 4', 'card 8', 'card 6', 'card 7']]);
+});
+test('test delete', () => {
+    let deleteL = leftDiv;
+    deleteL.addEventListener('click', delet);
+    mainAdd();
+    mainAdd();
+    mainAdd();
+    mainAdd();
+    document.getElementById('card 2').click();
+    expect(cardCounter(deleteL)).toEqual([3,['card 1', 'card 3', 'card 4']]);
+    mainAdd();
+    mainAdd();
+    document.getElementById('card 5').click();
+    expect(cardCounter(deleteL)).toEqual([4,['card 1', 'card 3', 'card 4', 'card 6']]);
+});

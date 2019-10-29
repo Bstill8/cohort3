@@ -1,9 +1,15 @@
 export class account{
     constructor(accountName, initialBalance){
         this.name = accountName;
-        this.balance = initialBalance;
+        this.ammount = initialBalance;
     }
     deposit(value){
-        this.balance += value;
+        this.ammount += value;
+    }
+    withdraw(value){
+        this.ammount -= value;
+    }
+    balance(){
+        return this.ammount;
     }
 }

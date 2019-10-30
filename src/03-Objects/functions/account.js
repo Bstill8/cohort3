@@ -62,3 +62,28 @@ export class accountController {
   }
 };
 export const user = new accountController;
+var cardNumber = 0;
+export function cardAdder(){
+  cardNumber ++;
+  let newCard = document.createElement('div');
+  let text = document.createElement('p');
+  let textN = document.createTextNode('Card ' + cardNumber.toString());
+  let deposit = document.createElement('button');
+  let withdraw = document.createElement('button');
+  let delet = document.createElement('button');
+  deposit.innerText = "Deposit";
+  withdraw.innerText = "Withdraw";
+  delet.innerText = "Delete";
+  text.className = "cardText";
+  deposit.className = "deposit";
+  withdraw.className = "withdraw";
+  delet.className = "delete";
+  newCard.className = 'account';
+  newCard.id = 'card ' +cardNumber.toString();
+  text.appendChild(textN);
+  newCard.appendChild(text);
+  newCard.appendChild(deposit);
+  newCard.appendChild(withdraw);
+  newCard.appendChild(delet);
+  return newCard;
+}

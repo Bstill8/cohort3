@@ -1,4 +1,4 @@
-import {account, user} from './account.js'
+import {account, user, cardAdder} from './account.js'
 
 test('create empty account', () => {
     var newInstance = new account('first', 25);
@@ -77,4 +77,23 @@ test('test lowest accounts function', () => {
     expect(user.lowAccount()).toEqual(25);
     user.createAccount("Holiday", 50);
     expect(user.lowAccount()).toEqual(25);
+})
+function cardTest(div){
+    let counter = 0;
+    let arr = [];
+    for(let i = 0; i < div.children.length; i++){
+        arr[i] = div.children[i].id;
+        counter ++;
+    }
+    return [counter, arr];
+}
+test('test the card adder', () => {
+    var main = document.createElement('div');
+    main.id = 'main'
+    document.body.appendChild(main);
+    var counter = 0;
+    main.appendChild(cardAdder());
+    expect(cardTest(main)).toEqual([1,['card 1']]);
+    main.appendChild(cardAdder());
+    expect(cardTest(main)).toEqual([2,['card 1', 'card 2']]);
 })

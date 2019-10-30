@@ -1,7 +1,7 @@
-import {account} from './account.js'
+import {account, accountController, user} from './account.js'
 
 let newAccount;
-
+let counter = 0;
 idCreateAccountButton.addEventListener("click", () => {
     newAccount = new account(acctName.value, Number(initialBalance.value))
     output.textContent = `Account name = ${newAccount.name}, Balance = $${newAccount.amount}`

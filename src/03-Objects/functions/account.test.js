@@ -1,4 +1,4 @@
-import {account, functions} from './account.js'
+import {account, user} from './account.js'
 
 test('create empty account', () => {
     var newInstance = new account('first', 25);
@@ -30,51 +30,51 @@ test('test balance method', () => {
 })
 
 const accountNames = () => {
-    return functions.allAccounts.map(acc => acc.name)    
+    return user.allAccounts.map(acc => acc.name)    
 }
 
 test('test create account function', () => {
-    functions.allAccounts = [];
-    functions.createAccount("Savings", 25)
+    user.allAccounts = [];
+    user.createAccount("Savings", 25)
     expect(accountNames()).toEqual(["Savings"]);
-    functions.createAccount("Car fund", 30)
+    user.createAccount("Car fund", 30)
     expect(accountNames()).toEqual(["Savings", "Car fund"]);
 })
 
 test('test delete account function', () => {
-    functions.allAccounts = [];
-    functions.createAccount("Savings", 25)
-    functions.createAccount("Car fund", 30)
-    functions.removeAccount("Savings");
+    user.allAccounts = [];
+    user.createAccount("Savings", 25)
+    user.createAccount("Car fund", 30)
+    user.removeAccount("Savings");
     expect(accountNames()).toEqual(["Car fund"])
-    functions.createAccount("Holiday", 50)
-    functions.removeAccount("Car fund");
+    user.createAccount("Holiday", 50)
+    user.removeAccount("Car fund");
     expect(accountNames()).toEqual(["Holiday"])
 })
 
 test('test sum accounts function', () => {
-    functions.allAccounts = [];
-    functions.createAccount("Savings", 25)
-    functions.createAccount("Car fund", 30)
-    expect(functions.sumAccounts()).toEqual(55)
-    functions.createAccount("Holiday", 50)
-    expect(functions.sumAccounts()).toEqual(105)
+    user.allAccounts = [];
+    user.createAccount("Savings", 25)
+    user.createAccount("Car fund", 30)
+    expect(user.sumAccounts()).toEqual(55)
+    user.createAccount("Holiday", 50)
+    expect(user.sumAccounts()).toEqual(105)
 })
 
 test('test highest accounts function', () => {
-    functions.allAccounts = [];
-    functions.createAccount("Savings", 25);
-    functions.createAccount("Car fund", 100);
-    expect(functions.highAccount()).toEqual(100);
-    functions.createAccount("Holiday", 50);
-    expect(functions.highAccount()).toEqual(100);
+    user.allAccounts = [];
+    user.createAccount("Savings", 25);
+    user.createAccount("Car fund", 100);
+    expect(user.highAccount()).toEqual(100);
+    user.createAccount("Holiday", 50);
+    expect(user.highAccount()).toEqual(100);
 })
 
 test('test lowest accounts function', () => {
-    functions.allAccounts = [];
-    functions.createAccount("Savings", 25);
-    functions.createAccount("Car fund", 100);
-    expect(functions.lowAccount()).toEqual(25);
-    functions.createAccount("Holiday", 50);
-    expect(functions.lowAccount()).toEqual(25);
+    user.allAccounts = [];
+    user.createAccount("Savings", 25);
+    user.createAccount("Car fund", 100);
+    expect(user.lowAccount()).toEqual(25);
+    user.createAccount("Holiday", 50);
+    expect(user.lowAccount()).toEqual(25);
 })

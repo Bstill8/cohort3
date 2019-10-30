@@ -61,3 +61,4 @@ export class accountController {
     return lowest;
   }
 };
+export const user = new accountController;

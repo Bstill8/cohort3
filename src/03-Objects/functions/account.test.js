@@ -1,4 +1,4 @@
-import {account, user, cardAdder, del} from './account.js'
+import {account, user, cardAdder, del, depost} from './account.js'
 
 test('create empty account', () => {
     var newInstance = new account('first', 25);
@@ -108,11 +108,29 @@ test('test delete reasignment function', () => {
     main.appendChild(cardAdder());
     main.appendChild(cardAdder());
     main.addEventListener('click', del)
-    card2.click();
+    card2.childNodes[4].click();
     expect(balance0.innerText).toEqual('Balance: $10');
     expect(balance1.innerText).toEqual('Balance: $20');
     expect(balance2.innerText).toEqual('Balance: $40');
-    card0.click();
+    card0.childNodes[4].click();
     expect(balance0.innerText).toEqual('Balance: $20');
-    expect(balance1.innerText).toEqual('Balance: $40')
+    expect(balance1.innerText).toEqual('Balance: $40');
+})
+test('test deposit button', () => {
+    let inst1 = new account('first', 10);
+    let inst2 = new account('second', 20);
+    let inst3 = new account('third', 30);
+    let inst4 = new account('fourth', 40);
+    user.allAccounts = [inst1, inst2, inst3, inst4];
+    var main = document.createElement('div');
+    var a = document.createElement('div');
+    main.id = 'main'
+    document.body.appendChild(main);
+    main.appendChild(a);
+    main.appendChild(cardAdder());
+    main.appendChild(cardAdder());
+    main.appendChild(cardAdder());
+    main.appendChild(cardAdder());
+    main.addEventListener('click', depost);
+    card0.click();
 })

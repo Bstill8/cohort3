@@ -110,7 +110,15 @@ export function del(event){
     main.children[i+1].children[5].innerText = 'Balance: $' + user.allAccounts[i].amount;
   }
 }
-export function depost(){
-  let index = event.target.parentNode.id.match([/^card/]);
-  user.allAccounts
+export function depost(event){
+  let index = event.target.parentNode.id.match(/[^card]/g);
+  let i = parseFloat(index[0]);
+  user.allAccounts[i].deposit(parseFloat(event.target.parentNode.childNodes[1].value));
+  event.target.parentNode.childNodes[5].innerText = 'Balance: $' + user.allAccounts[i].amount;
+}
+export function withdrw(event){
+  let index = event.target.parentNode.id.match(/[^card]/g);
+  let i = parseFloat(index[0]);
+  user.allAccounts[i].withdraw(parseFloat(event.target.parentNode.childNodes[1].value));
+  event.target.parentNode.childNodes[5].innerText = 'Balance: $' + user.allAccounts[i].amount;
 }

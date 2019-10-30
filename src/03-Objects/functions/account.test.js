@@ -132,5 +132,39 @@ test('test deposit button', () => {
     main.appendChild(cardAdder());
     main.appendChild(cardAdder());
     main.addEventListener('click', depost);
-    card0.click();
+    card0.childNodes[1].value = 10;
+    card0.childNodes[2].click();
+    expect(user.allAccounts[0].amount).toEqual(20);
+    expect(balance0.innerText).toEqual('Balance: $20');
+    card3.childNodes[1].value = 40;
+    card3.childNodes[2].click()
+    expect(user.allAccounts[3].amount).toEqual(80);
+    expect(user.allAccounts[2].amount).toEqual(30);
+    expect(balance3.innerText).toEqual('Balance: $80');
+})
+test('test withdraw', () => {
+    let inst1 = new account('first', 10);
+    let inst2 = new account('second', 20);
+    let inst3 = new account('third', 30);
+    let inst4 = new account('fourth', 40);
+    user.allAccounts = [inst1, inst2, inst3, inst4];
+    var main = document.createElement('div');
+    var a = document.createElement('div');
+    main.id = 'main'
+    document.body.appendChild(main);
+    main.appendChild(a);
+    main.appendChild(cardAdder());
+    main.appendChild(cardAdder());
+    main.appendChild(cardAdder());
+    main.appendChild(cardAdder());
+    main.addEventListener('click', withdrw);
+    card0.childNodes[1].value = 7;
+    card0.childNodes[2].click();
+    expect(user.allAccounts[0].amount).toEqual(3);
+    expect(balance0.innerText).toEqual('Balance: $5');
+    card3.childNodes[1].value = 40;
+    card3.childNodes[2].click()
+    expect(user.allAccounts[3].amount).toEqual(0);
+    expect(user.allAccounts[2].amount).toEqual(30);
+    expect(balance3.innerText).toEqual('Balance: $0');
 })

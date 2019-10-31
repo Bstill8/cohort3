@@ -1,4 +1,4 @@
-import {account, user, cardAdder, del, depost} from './account.js'
+import {account, user, cardAdder, del, depost} from './account.js.js'
 
 test('create empty account', () => {
     var newInstance = new account('first', 25);

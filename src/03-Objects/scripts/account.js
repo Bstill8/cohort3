@@ -4,10 +4,10 @@ export class account {
     this.amount = initialBalance;
   }
   deposit(value) {
-    this.amount += value;
+    this.amount = parseFloat(this.amount) + value;
   }
   withdraw(value) {
-    this.amount -= value;
+    this.amount = parseFloat(this.amount) - value;
   }
   balance() {
     return `Your new balance is $${this.amount}`;
@@ -66,9 +66,9 @@ export class accountController {
   }
 };
 export const user = new accountController;
-var cardNumber = 0;
+var cardNumber;
 export function cardAdder(){
-  cardNumber = main.children.length -1;
+  cardNumber = main.children.length -2;
   let newCard = document.createElement('div');
   let text = document.createElement('p');
   let textN = document.createTextNode(user.allAccounts[cardNumber].name);
@@ -105,9 +105,9 @@ export function del(event){
   user.removeAccount(user.allAccounts[i].name);
   main.removeChild(main.lastChild);
   for(let i = 0; i<user.allAccounts.length; i++){
-    main.children[i+1].id = 'card' + i.toString();
-    main.children[i+1].children[5].id = 'balance' + i.toString();
-    main.children[i+1].children[5].innerText = 'Balance: $' + user.allAccounts[i].amount;
+    main.children[i+2].id = 'card' + i.toString();
+    main.children[i+2].children[5].id = 'balance' + i.toString();
+    main.children[i+2].children[5].innerText = 'Balance: $' + user.allAccounts[i].amount;
   }
 }
 export function depost(event){

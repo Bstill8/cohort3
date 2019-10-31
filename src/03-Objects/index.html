@@ -5,22 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="./index.css" rel="stylesheet">
 </head>
 <body>
     <div id="main">
-        Account Creator
+        <h1>Account Creator</h1>
         <div id="accountCreator">
             <input type="text" placeholder="Name" id="acctName">
-            <input type="number" placeholder="Amount"id="initialBalance">
-            <button value="Create Account" id="idCreateAccountButton">Create Account</button>
-
-        </div>
-        <div>
-            <input type="number" id="idDeltaAmount" placeholder="Amount">
-            <button id="idDepositButton">Deposit</button>
-            <button id="idWithdrawButton">Withdraw</button>
-
-            <p id="output">Output</p>
+            <input type="number" placeholder="Amount"id="initialBalance"> <br>
+            <button id="createAccount">Create Account</button>
+            <input type="button" value="Smallest Account" id="small">
+            <input type="button" value="Largest Account" id="large">
+            <input type="button" value="Sum of Accounts" id="sum">
+            <p id="mainOut">Output</p>
         </div>
     </div>
 <script src="./functions/index.js" type="module"></script>    

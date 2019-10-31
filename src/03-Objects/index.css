@@ -1,0 +1,15 @@
+.account{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    background-color: rgb(47, 158, 47);
+}
+.deposit{
+    height: 21px;
+}
+.withdraw{
+    height: 21px;
+}
+.delete{
+    height: 21px;
+}

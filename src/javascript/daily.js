@@ -1,4 +1,12 @@
-
+//More array Exercises October 29
+export function redFunction(staff){
+    let balArry = staff.map(a => a.balance);
+    return balArry.reduce(function(sum, current, i, arr){return sum + current});
+}
+export function avgFunc(staff){
+    let sum = redFunction(staff);
+    return Math.round(sum/staff.length);
+}
 //loopStaff October 25
 export function loopStaffMap(staff){
     let staffEmail = [];

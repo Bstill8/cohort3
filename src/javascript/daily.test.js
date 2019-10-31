@@ -1,4 +1,4 @@
-import {loopStaffMap, loopStaffForEach, loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
+import {avgFunc, redFunction, loopStaffMap, loopStaffForEach, loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
 const data = {
     staff: [
         { fname: "Jane", lname: "Smith", balance: 10 },
@@ -13,6 +13,11 @@ const data = {
     city: "Calgary",
     prov: "Alberta"
 };
+test('test total balances and average balances', () => {
+    const staff = data.staff;
+    expect(redFunction(staff)).toEqual(3823)
+    expect(avgFunc(staff)).toEqual(546)
+})
 test('test for each', () => {
     const staffEmail = loopStaffForEach(data.staff);
     expect(staffEmail[0]).toEqual("jane.smith@evolveu.ca");

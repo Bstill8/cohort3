@@ -1,3 +1,5 @@
+//November 5 Daily exercise
+
 //More array Exercises October 29
 export function redFunction(staff){
     let balArry = staff.map(a => a.balance);

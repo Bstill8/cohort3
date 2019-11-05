@@ -1,4 +1,7 @@
 import {avgFunc, redFunction, loopStaffMap, loopStaffForEach, loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
+//November 5 exercise
+
+//more array exercises October 29
 const data = {
     staff: [
         { fname: "Jane", lname: "Smith", balance: 10 },

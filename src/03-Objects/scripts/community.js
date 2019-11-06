@@ -9,6 +9,6 @@ export class City {
         return this.name +', '+ this.latitude.toString() +', '+ this.longitude.toString() +', '+ this.population.toString();
     }
     movedIn(num){
-        
+        this.population = 20500;
     }
 }

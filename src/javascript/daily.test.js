@@ -1,4 +1,10 @@
-import {avgFunc, redFunction, loopStaffMap, loopStaffForEach, loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
+import {balFilter, avgFunc, redFunction, loopStaffMap, loopStaffForEach, loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
+//November 6 exercise
+test('balances over 1000', () => {
+    const result = balFilter(data);
+    expect(result[0]).toEqual(1000);
+    expect(result[result.length - 1]).toEqual(1330);
+})
 //November 5 exercise
 test('How do pointers work', () => {
     console.log("Reference");

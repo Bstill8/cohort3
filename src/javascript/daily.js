@@ -1,5 +1,11 @@
-//November 5 Daily exercise
-
+//November 6 Daily exercise
+export function balFilter(data){
+    let balances = data.staff.map(x => x.balance);
+    return balances.filter(function (el){
+        if(el >= 1000){ return true;}
+        return false;
+    });
+}
 //More array Exercises October 29
 export function redFunction(staff){
     let balArry = staff.map(a => a.balance);

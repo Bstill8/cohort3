@@ -34,14 +34,45 @@ export class Community{
     addCity(City){
         this.Cities[City.name] = City;
     }
-    whichSphere(latitude){
-        if(Number(latitude) >= 0){
+    whichSphere(name){
+        if(Number(this.Cities[name].latitude) >= 0){
             return 'Northern Hemisphere';
         }
         return 'Southern Hemisphere'
     }
     getMostNorthern(){
-        
+        var northern;
+        var lat = -90;
+        const cityArray = Object.values(this.Cities);
+        for(let a in cityArray){
+            if(cityArray[a].latitude > lat){
+                lat = cityArray[a].latitude;
+                northern = cityArray[a];
+            }
+        }
+        return northern.name;
     }
-
+    getMostSouthern(){
+        var southern;
+        var lat = 90;
+        const cityArray = Object.values(this.Cities);
+        for(let a in cityArray){
+            if(cityArray[a].latitude < lat){
+                lat = cityArray[a].latitude;
+                southern = cityArray[a];
+            }
+        }
+        return southern.name;
+    }
+    getPopulation(){
+        const cityArray = Object.values(this.Cities);
+        return cityArray.reduce((sum, current) => {return sum += current.population}, 0) 
+    }
+    createCity(name, latitude, longitude, population){
+        let newCity = new City(name, latitude, longitude, population);
+        this.Cities[name] = newCity;
+    }
+    deleteCity(name){
+        delete this.Cities[name];
+    }
 }

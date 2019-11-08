@@ -1,0 +1,17 @@
+#container{
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    column-gap: 30px;
+}
+#controller{
+    grid-column: 1;
+    background-color: gray;
+    height: 300px;
+    width: 300px;
+}
+#cities{
+    grid-column: 2;
+    background-color: rgb(51, 51, 167);
+    height: 300px;
+    min-width: 400px;
+}

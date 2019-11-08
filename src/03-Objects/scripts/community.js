@@ -41,8 +41,8 @@ export class Community{
         return 'Southern Hemisphere'
     }
     getMostNorthern(){
-        var northern;
-        var lat = -90;
+        let northern;
+        let lat = -90;
         const cityArray = Object.values(this.Cities);
         for(let a in cityArray){
             if(cityArray[a].latitude > lat){
@@ -53,8 +53,8 @@ export class Community{
         return northern.name;
     }
     getMostSouthern(){
-        var southern;
-        var lat = 90;
+        let southern;
+        let lat = 90;
         const cityArray = Object.values(this.Cities);
         for(let a in cityArray){
             if(cityArray[a].latitude < lat){

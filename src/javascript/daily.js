@@ -1,3 +1,17 @@
+//November 8 exercise
+export function fullNames(data){
+    return data.map(x => x.fname + ' ' + x.lname);
+}
+export function provinceFilter(data, callBack = (a) => {return a;}){
+    let filtered = [];
+    for(let i of data){
+        if(i.province == 'AB' || i.province == 'BC'){
+            filtered.push(i)
+        }
+    }
+    return callBack(filtered);
+}
+
 //November 6 Daily exercise
 export function balFilter(data){
     let balances = data.staff.map(x => x.balance);
@@ -102,9 +116,9 @@ export const assertEquals =(p1,p2) => {
     if (p1 === p2){
         return true;
     }
-    console.log("*** the two values are not the same")
-    console.log("p1--> ",p1);
-    console.log("p2--> ",p2);
+    // console.log("*** the two values are not the same")
+    // console.log("p1--> ",p1);
+    // console.log("p2--> ",p2);
 
 }
 // and before this comment ---

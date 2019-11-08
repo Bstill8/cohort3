@@ -1,9 +1,8 @@
-import {fullNames, provinceFilter, balFilter, avgFunc, redFunction, loopStaffMap, loopStaffForEach, loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
+import {fullNames, provinceFilter, balFilter, avgFunc, redFunction, loopStaff, loopStaffMap, loopStaffForEach, loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
 //November 8 exercise
 test('test fullNames', () => {
-    const names = fullNames(people);
-    expect(names[0]).toEqual('Alex Smith');
-    expect(names[3]).toEqual('Brent Riddle');
+    expect(fullNames({fname:"Alex", lname:"Smith", province:"BC", age:33})).toEqual('Alex Smith');
+    expect(fullNames({fname:"Brent", lname:"Riddle", province:"MN", age:79})).toEqual('Brent Riddle');
 })
 test('test provinceFilter', () => {
     const names = provinceFilter(people);
@@ -70,7 +69,6 @@ test('balances over 1000', () => {
 })
 //November 5 exercise
 test('How do pointers work', () => {
-    console.log("Reference");
     const a = {"name":"Larry", "bal":10};
     const arr = [];
     const obj = {};

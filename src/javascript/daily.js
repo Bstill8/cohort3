@@ -1,15 +1,15 @@
 //November 8 exercise
 export function fullNames(data){
-    return data.map(x => x.fname + ' ' + x.lname);
+    return data.fname + ' ' + data.lname;
 }
 export function provinceFilter(data, callBack = (a) => {return a;}){
     let filtered = [];
     for(let i of data){
         if(i.province == 'AB' || i.province == 'BC'){
-            filtered.push(i)
+            filtered.push(callBack(i));
         }
     }
-    return callBack(filtered);
+    return filtered;
 }
 
 //November 6 Daily exercise

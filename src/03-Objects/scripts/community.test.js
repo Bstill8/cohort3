@@ -1,5 +1,5 @@
 import {City, Community} from './community'
-import {cardAdder} from './comunityIndex'
+import {cardAdder} from './comunityPresentation'
 test('show method', () => {
     let test1 = new City('test1', 50, 100, 20000);
     let test2 = new City('test2', 40, 80, 100);
@@ -52,10 +52,14 @@ test('test getMostNorthern', () => {
 })
 test('test getMostSouthern', () => {
     let community1 = new Community();
-    community1.createCity('test2', 40, 80, 100);
-    expect(community1.getMostSouthern()).toEqual('test2');
-    community1.createCity('test1', 50, 100, 20000);
-    expect(community1.getMostSouthern()).toEqual('test2');
+    community1.createCity('test2', 40, 80, 100, 0);
+    expect(community1.getMostSouthern()).toEqual('Most Southern:\ntest2');
+    community1.createCity('test1', 50, 100, 20000, 1);
+    expect(community1.getMostSouthern()).toEqual('Most Southern:\ntest2');
+    community1.createCity('test3', -40, 50, 100, 2);
+    expect(community1.getMostSouthern()).toEqual('Most Southern:\ntest3');
+    community1.createCity('test4', -80, 50, 100, 3);
+    expect(community1.getMostSouthern()).toEqual('Most Southern:\ntest4');
 })
 test('test getPopulation', () => {
     let community1 = new Community();
@@ -86,6 +90,6 @@ test('test cardAddeer', () => {
     let testDiv = document.createElement('div');
     document.body.appendChild(testDiv);
     expect(testDiv.childNodes.length).toEqual(0);
-    testDiv.appendChild(cardAdder('calg'));
+    testDiv.appendChild(cardAdder('0', 'Northern Hemisphere', '50', '40', 'Sitllco', '500'));
     expect(testDiv.childNodes.length).toEqual(1);
 })

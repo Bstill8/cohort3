@@ -29,48 +29,54 @@ export class City {
 }
 export class Community{
     constructor(){
-        this.Cities = {};
+        this.Cities = {key: {counter: 0,
+                        increment: function (){this.counter++},
+                        name: null,
+                        latitude: null,
+                        longitude: null,
+                        population: 0
+                    }};
     }
     addCity(City){
         this.Cities[City.name] = City;
     }
-    whichSphere(name){
-        if(Number(this.Cities[name].latitude) >= 0){
+    whichSphere(key){
+        if(Number(this.Cities[key].latitude) >= 0){
             return 'Northern Hemisphere';
         }
         return 'Southern Hemisphere'
     }
     getMostNorthern(){
         let northern;
-        let lat = -90;
+        let lat = -100;
         const cityArray = Object.values(this.Cities);
         for(let a in cityArray){
-            if(cityArray[a].latitude > lat){
+                if(cityArray[a].latitude > lat && cityArray[a].latitude != null){
                 lat = cityArray[a].latitude;
                 northern = cityArray[a];
             }
         }
-        return northern.name;
+        return 'Most Northern:\n' + northern.name;
     }
     getMostSouthern(){
         let southern;
-        let lat = 90;
+        let lat = 100;
         const cityArray = Object.values(this.Cities);
         for(let a in cityArray){
-            if(cityArray[a].latitude < lat){
+                if(cityArray[a].latitude < lat && cityArray[a].latitude != null){
                 lat = cityArray[a].latitude;
                 southern = cityArray[a];
             }
         }
-        return southern.name;
+        return 'Most Southern:\n' + southern.name;
     }
     getPopulation(){
         const cityArray = Object.values(this.Cities);
-        return cityArray.reduce((sum, current) => {return sum += current.population}, 0) 
+        return 'Total Population:\n' + cityArray.reduce((sum, current) => {return sum += Number(current.population)}, 0) 
     }
-    createCity(name, latitude, longitude, population){
+    createCity(name, latitude, longitude, population, key){
         let newCity = new City(name, latitude, longitude, population);
-        this.Cities[name] = newCity;
+        this.Cities[key] = newCity;
     }
     deleteCity(name){
         delete this.Cities[name];

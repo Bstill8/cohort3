@@ -22,4 +22,7 @@
 .city{
     background-color: chocolate;
 }
+h2{
+    margin-bottom: 0px;
+}
 city:nth-child(2n+1) {background-color: yellowgreen;}

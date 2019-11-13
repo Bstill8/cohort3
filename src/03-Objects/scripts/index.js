@@ -1,4 +1,4 @@
-import {del, depost, withdrw, cardAdder, account, accountController, user} from './account.js.js'
+import {del, depost, withdrw, cardAdder, account, accountController, user} from './account.js'
 
 createAccount.addEventListener('click', () => {
     user.createAccount(acctName.value, initialBalance.value);

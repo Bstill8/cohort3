@@ -1,5 +1,5 @@
 import {City, Community} from './community'
-
+import {cardAdder} from './comunityIndex'
 test('show method', () => {
     let test1 = new City('test1', 50, 100, 20000);
     let test2 = new City('test2', 40, 80, 100);
@@ -81,4 +81,11 @@ test('test deleteCity', () => {
     expect(community1.Cities).toEqual({"test2": {"latitude": -50, "longitude": 80, "name": "test2", "population": 100}});
 
 
+})
+test('test cardAddeer', () => {
+    let testDiv = document.createElement('div');
+    document.body.appendChild(testDiv);
+    expect(testDiv.childNodes.length).toEqual(0);
+    testDiv.appendChild(cardAdder('calg'));
+    expect(testDiv.childNodes.length).toEqual(1);
 })

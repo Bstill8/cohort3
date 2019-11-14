@@ -44,3 +44,9 @@ export function cardAdder(key, hemi, lat, lon, name, pop){
     newCard.appendChild(hemisphere);
     return newCard;
 }
+export function updateCard(community, id, key){
+    id.innerText = 'Population: '+ community.Cities[key].population;
+}
+export function deleteCard(card){
+    card.parentNode.removeChild(card);
+}

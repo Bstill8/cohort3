@@ -1,5 +1,5 @@
 import {City, Community} from './community'
-import {cardAdder} from './comunityPresentation'
+import {cardAdder, updateCard, deleteCard} from './comunityPresentation'
 test('show method', () => {
     let test1 = new City('test1', 50, 100, 20000);
     let test2 = new City('test2', 40, 80, 100);
@@ -92,4 +92,25 @@ test('test cardAddeer', () => {
     expect(testDiv.childNodes.length).toEqual(0);
     testDiv.appendChild(cardAdder('0', 'Northern Hemisphere', '50', '40', 'Sitllco', '500'));
     expect(testDiv.childNodes.length).toEqual(1);
+})
+test('test updateCard', () => {
+    let comm1 = new Community();
+    comm1.createCity('tester', '20', '40', '60', '0');
+    let testDiv = document.createElement('div');
+    testDiv.appendChild(cardAdder('0', 'Northern Hemisphere', '20', '40', 'tester', '60'));
+    document.body.appendChild(testDiv);
+    expect(population0.innerText).toEqual('Population: 60');
+    comm1.Cities[0].movedIn(40);
+    updateCard(comm1, population0, '0');
+    expect(population0.innerText).toEqual('Population: 100');
+})
+test('test deleteCard', () => {
+    let comm1 = new Community();
+    comm1.createCity('tester', '20', '40', '60', '0');
+    let testDiv = document.createElement('div');
+    testDiv.appendChild(cardAdder('0', 'Northern Hemisphere', '20', '40', 'tester', '60'));
+    document.body.appendChild(testDiv);
+    expect(testDiv.childNodes.length).toEqual(1);
+    deleteCard(testDiv.childNodes[0]);
+    expect(testDiv.childNodes.length).toEqual(0);
 })

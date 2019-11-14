@@ -9,10 +9,10 @@ export class City {
         return this.name +', '+ this.latitude.toString() +', '+ this.longitude.toString() +', '+ this.population.toString();
     }
     movedIn(num){
-        this.population += num;
+        this.population = Number(num) + Number(this.population);
     }
     movedOut(num){
-        this.population -= num;
+        this.population = Number(this.population) - Number(num);
     }
     howBig(){
         if(this.population > 100000){
@@ -78,7 +78,7 @@ export class Community{
         let newCity = new City(name, latitude, longitude, population);
         this.Cities[key] = newCity;
     }
-    deleteCity(name){
-        delete this.Cities[name];
+    deleteCity(key){
+        delete this.Cities[key];
     }
 }

@@ -21,6 +21,9 @@
 }
 .city{
     background-color: chocolate;
+    border-style: solid;
+    border-width: 8px;
+    border-color: rgba(33, 206, 99, 0.5)
 }
 h2{
     margin-bottom: 0px;

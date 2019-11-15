@@ -37,9 +37,6 @@ export class Community{
                         population: 0
                     }};
     }
-    addCity(City){
-        this.Cities[City.name] = City;
-    }
     whichSphere(key){
         if(Number(this.Cities[key].latitude) >= 0){
             return 'Northern Hemisphere';

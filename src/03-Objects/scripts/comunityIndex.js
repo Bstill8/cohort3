@@ -28,7 +28,7 @@ cities.addEventListener('click', (event) => {
         comm1.Cities[key].movedOut(input);
         updateCard(comm1, popID, key);
     }
-    console.log(comm1.Cities);
+    console.log(key);
 })
 export function cardValueAssigner(key){
 

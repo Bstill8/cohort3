@@ -1,27 +1,31 @@
+import {Community} from './community'
 global.fetch = require('node-fetch');
 
-const url = 'http://localhost:5000/'
 
 
-
-export async function pull (){
+export async function pull (url){
     let response = await fetch(url +'all');
     let json = await response.json();
-
-
-    return json;
+    return await json;
 }
 
-//pull grabs info from the server
-    //fetch
-
-/*
-
-if (response.ok) { // if HTTP-status is 200-299
-  // get the response body (the method explained below)
-  let json = await response.json();
-} else {
-  alert("HTTP-Error: " + response.status);
+export function convertArray(arr, com){
+    arr.forEach(function (e){
+        com.createCity(e.name, e.latitude, e.longitude, e.population, e.key);
+    })
 }
-
-*/
+export function post(obj, url){
+    const response = await fetch(url,{
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        referrer: 'no-referrer',
+        body: JSON.stringify(obj)
+    });
+    const json = await response.json();
+    return json.status;
+}

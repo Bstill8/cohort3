@@ -14,8 +14,8 @@ export function convertArray(arr, com){
         com.createCity(e.name, e.latitude, e.longitude, e.population, e.key);
     })
 }
-export function post(obj, url){
-    const response = await fetch(url,{
+export async function post(obj, url){
+    const response = await fetch(url, {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -23,9 +23,9 @@ export function post(obj, url){
         headers: {
             'Content-Type': 'application/json'
         },
+        redirect: 'follow',
         referrer: 'no-referrer',
         body: JSON.stringify(obj)
     });
-    const json = await response.json();
-    return json.status;
+    return response.status;
 }

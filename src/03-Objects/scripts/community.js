@@ -1,9 +1,10 @@
 export class City {
-    constructor(name, latitude, longitude, population){
+    constructor(name, latitude, longitude, population, key){
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
         this.population = population;
+        this.key = key;
     }
     show(){
         return this.name +', '+ this.latitude.toString() +', '+ this.longitude.toString() +', '+ this.population.toString();
@@ -72,7 +73,7 @@ export class Community{
         return 'Total Population:\n' + cityArray.reduce((sum, current) => {return sum += Number(current.population)}, 0) 
     }
     createCity(name, latitude, longitude, population, key){
-        let newCity = new City(name, latitude, longitude, population);
+        let newCity = new City(name, latitude, longitude, population, key);
         this.Cities[key] = newCity;
     }
     deleteCity(key){

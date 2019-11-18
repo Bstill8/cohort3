@@ -1,10 +1,10 @@
-import {pull, convertArray} from './communityFetch'
+import {pull, convertArray, post} from './communityFetch'
 import {Community} from './community'
 global.fetch = require('node-fetch');
 const url = 'http://localhost:5000/'
 test('test pull', async () => {
-    postData(url + 'add', {'name': 'Calgary', 'latitude': 60, 'longitude': 120, 'population': 500, 'key':0})
-    postData(url + 'add', {'name': 'Gregary', 'latitude': 60, 'longitude': 120, 'population': 500, 'key':1})
+    await postData(url + 'add', {'name': 'Calgary', 'latitude': 60, 'longitude': 120, 'population': 500, 'key':0})
+    await postData(url + 'add', {'name': 'Gregary', 'latitude': 60, 'longitude': 120, 'population': 500, 'key':1})
     const data = await pull(url)
     expect(data[0]).toEqual({'name': 'Calgary', 'latitude': 60, 'longitude': 120, 'population': 500, 'key':0})
 
@@ -20,6 +20,13 @@ test('test convertArray', async () => {
     convertArray(await pull(), testCom);
     expect(testCom.Cities[0].name).toEqual('Calgary');
     expect(testCom.Cities[1].name).toEqual('Gregary');
+})
+test('test post', async () => {
+    await postData(url + 'clear');
+    const testCom = new Community();
+    testCom.createCity('tester', 10, 30, 500, 0);
+    expect(await post(testCom.Cities[0], url + 'add')).toEqual(200);
+
 })
 async function postData(url = '', data = {}) {
     // Default options are marked with *

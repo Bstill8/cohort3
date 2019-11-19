@@ -8,8 +8,6 @@ function App() {
       <div className="Icons">
         <img src={image} className="Icon" id="I1"/>
         <img src={image} className="Icon" id="I2"/>
-        <img src={image} className="Icon" id="I3"/>
-        <img src={image} className="Icon" id="I4"/>
       </div>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

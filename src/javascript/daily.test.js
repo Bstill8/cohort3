@@ -1,4 +1,44 @@
-import {fullNames, provinceFilter, balFilter, avgFunc, redFunction, loopStaff, loopStaffMap, loopStaffForEach, loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
+import {peopleReducer, fullNames, provinceFilter, balFilter, avgFunc, redFunction, loopStaff, loopStaffMap, loopStaffForEach, loopStaffOf, loopStaffIn, sortFunction, filterFunction, reduceFunction, mapFunction, forEFunction, splice, slice, functions, assertEquals, forloop, forwhile, dowhile, forin, forof} from './daily'
+//November 22 exercise
+let myArray = [
+	{num: 5,str: "apples", origin:"BC"},
+	{num: 7,str: "oranges", origin:"Florida"},
+	{num: 2,str: "lemons", origin:"Mexico"},
+	{num: 8,str: "bananas", origin:"Ecuador"},
+	{num: 6,str: "avocados", origin:"Mexico"},
+	{num: 4,str: "pineapple", origin:"Brazil"},
+	{num: 3,str: "blueberries", origin:"Chile"},
+	{num: 9,str: "pears", origin:"Oregon"},
+	{num: 1,str: "cantaloupe", origin:"California"}
+];
+test('sort array', () => {
+    myArray.sort(function(a, b){
+        return a.num-b.num;
+    });
+    console.log('myArray = ', myArray)
+    myArray.sort(function named(a, b){
+        if(a.str > b.str){return 1}
+        if(a.str < b.str){return -1}
+        return 0;
+    });
+    console.log('myArray = ', myArray)
+    myArray.sort((a, b) => {
+        if(b.origin < a.origin){return 1};
+        if(b.origin > a.origin){return -1};
+        return 0;
+    });
+    console.log('myArray = ', myArray)
+})
+//November 21 exercise
+test('test peopleReducer', () => {
+    let small = [{fname:"Alex", lname:"Smith", province:"BC", age:33},
+    {fname:"Angela", lname:"Jones", province:"AB", age:61}]
+    let small2 = [{fname:"Anne", lname:"Bird", province:"SK", age:35},
+	{fname:"Brent", lname:"Riddle", province:"MN", age:79}]
+    expect(peopleReducer(small)).toEqual({numberOfPeople: 2, totalAge: 94, avgAge: 47});
+    expect(peopleReducer(small2)).toEqual({numberOfPeople: 0, totalAge: 0, avgAge: NaN})
+    expect(peopleReducer(people)).toEqual({numberOfPeople: 22, totalAge: 838, avgAge: 38})
+})
 //November 8 exercise
 test('test fullNames', () => {
     expect(fullNames({fname:"Alex", lname:"Smith", province:"BC", age:33})).toEqual('Alex Smith');
@@ -15,48 +55,48 @@ test('test fullnames and provinceFilter together', () => {
     expect(names[6]).toEqual('Forest Vaughn');
 })
 const people = [
-	{fname:"Alex", lname:"Smith", province:"BC", age:33},
-	{fname:"Angela", lname:"Jones", province:"AB", age:61},
+	{fname:"Alex", lname:"Smith", province:"BC", age:33},//33
+	{fname:"Angela", lname:"Jones", province:"AB", age:61},//61
 	{fname:"Anne", lname:"Bird", province:"SK", age:35},
 	{fname:"Brent", lname:"Riddle", province:"MN", age:79},
-	{fname:"Byron", lname:"Cardenas", province:"BC", age:38},
-	{fname:"Carrie", lname:"Ramirez", province:"AB", age:89},
+	{fname:"Byron", lname:"Cardenas", province:"BC", age:38},//38
+	{fname:"Carrie", lname:"Ramirez", province:"AB", age:89},//89
 	{fname:"Cheryl", lname:"Glenn", province:"SK", age:70},
 	{fname:"Dima", lname:"Curry", province:"MN", age:67},
-	{fname:"Dustin", lname:"Bullock", province:"BC", age:59},
-	{fname:"Eva", lname:"Keiths", province:"AB", age:24},
+	{fname:"Dustin", lname:"Bullock", province:"BC", age:59},//59
+	{fname:"Eva", lname:"Keiths", province:"AB", age:24},//24
 	{fname:"Faith", lname:"Liu", province:"SK", age:46},
 	{fname:"Fawad", lname:"Bowman", province:"MN", age:69},
-	{fname:"Forest", lname:"Vaughn", province:"BC", age:52},
-	{fname:"Giovanni", lname:"Browning", province:"AB", age:32},
+	{fname:"Forest", lname:"Vaughn", province:"BC", age:52},//52
+	{fname:"Giovanni", lname:"Browning", province:"AB", age:32},//32
 	{fname:"Greg", lname:"Hogan", province:"SK", age:55},
 	{fname:"Harpreet", lname:"Ramsey", province:"MN", age:18},
-	{fname:"Ian", lname:"Fitzgerald", province:"BC", age:16},
-	{fname:"James", lname:"Kramer", province:"AB", age:57},
+	{fname:"Ian", lname:"Fitzgerald", province:"BC", age:16},//16
+	{fname:"James", lname:"Kramer", province:"AB", age:57},//57
 	{fname:"Jarvis", lname:"Ortega", province:"SK", age:69},
 	{fname:"Jawad", lname:"Huerta", province:"MN", age:35},
-	{fname:"Jinbong", lname:"Robinson", province:"BC", age:26},
-	{fname:"Jingnan", lname:"Hatfield", province:"AB", age:71},
+	{fname:"Jinbong", lname:"Robinson", province:"BC", age:26},//26
+	{fname:"Jingnan", lname:"Hatfield", province:"AB", age:71},//71
 	{fname:"Joe", lname:"Banks", province:"SK", age:37},
 	{fname:"Kristina", lname:"Dalton", province:"MN", age:73},
-	{fname:"Latora", lname:"Matthews", province:"BC", age:25},
-	{fname:"Lauren", lname:"McClure", province:"AB", age:42},
+	{fname:"Latora", lname:"Matthews", province:"BC", age:25},//25
+	{fname:"Lauren", lname:"McClure", province:"AB", age:42},//42
 	{fname:"Licedt", lname:"Rasmussen", province:"SK", age:30},
 	{fname:"Linden", lname:"Pierce", province:"MN", age:68},
-	{fname:"Luis", lname:"Price", province:"BC", age:23},
-	{fname:"Marcela", lname:"Perez", province:"AB", age:20},
+	{fname:"Luis", lname:"Price", province:"BC", age:23},//23
+	{fname:"Marcela", lname:"Perez", province:"AB", age:20},//20
 	{fname:"Marilou", lname:"Graham", province:"SK", age:32},
 	{fname:"Matt", lname:"Novak", province:"MN", age:29},
-	{fname:"Monica", lname:"Giles", province:"BC", age:34},
-	{fname:"Niloufar", lname:"Carson", province:"AB", age:29},
+	{fname:"Monica", lname:"Giles", province:"BC", age:34},//34
+	{fname:"Niloufar", lname:"Carson", province:"AB", age:29},//29
 	{fname:"Omar", lname:"Olson", province:"SK", age:69},
 	{fname:"Roger", lname:"Woodard", province:"MN", age:84},
-	{fname:"Roman", lname:"Swanson", province:"BC", age:21},
-	{fname:"Seun", lname:"Kelly", province:"AB", age:60},
+	{fname:"Roman", lname:"Swanson", province:"BC", age:21},//21
+	{fname:"Seun", lname:"Kelly", province:"AB", age:60},//60
 	{fname:"Shane", lname:"Frost", province:"SK", age:87},
 	{fname:"Steven", lname:"Haynes", province:"MN", age:47},
-	{fname:"Thomas", lname:"Hart", province:"BC", age:14},
-	{fname:"Trent", lname:"Kerr", province:"AB", age:12},
+	{fname:"Thomas", lname:"Hart", province:"BC", age:14},//14
+	{fname:"Trent", lname:"Kerr", province:"AB", age:12},//12
 	{fname:"Darrell", lname:"Koch", province:"SK", age:10},
 	{fname:"Tylor", lname:"Torres", province:"MN", age:98}
 ];

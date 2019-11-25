@@ -1,3 +1,21 @@
+//November 22 exercise
+
+//November 21 exercise
+export function peopleReducer(data){
+    let newData = provinceFilter(data).reduce((sum, current) => {
+        sum.avgArray.push(current.age);
+        return (
+            {
+                numberOfPeople: sum.numberOfPeople + 1,
+                totalAge: sum.totalAge + current.age,
+                avgArray: sum.avgArray,
+            })
+    }, {numberOfPeople: 0, totalAge: 0, avgArray: [0]});
+    let avgAge = Math.round(newData.avgArray.reduce((sum, current) => {return sum + current;})/(newData.avgArray.length - 1));
+    delete newData.avgArray;
+    newData.avgAge = avgAge;
+    return newData;
+}
 //November 8 exercise
 export function fullNames(data){
     return data.fname + ' ' + data.lname;

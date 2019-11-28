@@ -47,6 +47,8 @@ class App extends React.Component{
         <div className="Icons" onClick={this.iconSelect}>
           <img src={image} className="Icon" id="I1" name="home"/>
           <img src={image} className="Icon" id="I2" name="TTT"/>
+          <img src={image} className="Icon" id="I3" name="account"/>
+          <img src={image} className="Icon" id="I4" name="other"/>
         </div>
         <header className="App-header">
           <div  id="subroot">

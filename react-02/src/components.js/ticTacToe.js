@@ -1,4 +1,5 @@
 import React from 'react';
+//--------------------------Pair Programmed with Tyler Armitage---------------------------------------
 function Square(props){
     return (
       <button className="square" onClick={props.onClick} style={props.style}>
@@ -73,7 +74,7 @@ function Square(props){
       }
   
       if (aiStart.checked) {
-        await this.setState({
+        this.setState({
           xIsNext: false
         })
         if (!this.state.xIsNext && this.players === "pve") {

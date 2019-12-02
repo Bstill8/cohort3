@@ -2,8 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import image from "./expressionless.svg"
-import ReactDOM from 'react-dom';
-import Game from './TicTacToe';
+import Game from './components.js/ticTacToe';
 class App extends React.Component{
   constructor(){
     super();
@@ -22,9 +21,19 @@ class App extends React.Component{
         rendered: 'TTT'
       })
     }
+    if(event.target.id === 'I3'){
+      this.setState({
+        rendered: 'Accounts'
+      })
+    }
+    if(event.target.id === 'I3'){
+      this.setState({
+        rendered: 'Cities'
+      })
+    } 
   }
   navigator(){
-    if(this.state.rendered == 'home'){
+    if(this.state.rendered === 'home'){
       return <div><img src={logo} className="App-logo" alt="logo" />
       <p>
         Edit <code>src/App.js</code> and save to reload.
@@ -38,7 +47,16 @@ class App extends React.Component{
         Learn React
       </a></div>;
     }
-    return <Game />;
+    if(this.state.rendered === 'TTT'){
+      return <Game />;
+    }
+    // if(this.state.rendered === 'Accounts'){
+    //   return <Accounts />;
+    // }
+    // if(this.state.rendered === 'Cities'){
+    //   return <Citys />;
+    // }
+    
   }
   render(){  
     
@@ -48,7 +66,7 @@ class App extends React.Component{
           <img src={image} className="Icon" id="I1" name="home"/>
           <img src={image} className="Icon" id="I2" name="TTT"/>
           <img src={image} className="Icon" id="I3" name="account"/>
-          <img src={image} className="Icon" id="I4" name="other"/>
+          <img src={image} className="Icon" id="I4" name="cities"/>
         </div>
         <header className="App-header">
           <div  id="subroot">

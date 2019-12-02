@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import image from "./expressionless.svg"
 import Game from './components.js/ticTacToe';
+import Account from './components.js/accountController'
 class App extends React.Component{
   constructor(){
     super();
@@ -26,7 +27,7 @@ class App extends React.Component{
         rendered: 'Accounts'
       })
     }
-    if(event.target.id === 'I3'){
+    if(event.target.id === 'I4'){
       this.setState({
         rendered: 'Cities'
       })
@@ -45,21 +46,21 @@ class App extends React.Component{
         rel="noopener noreferrer"
       >
         Learn React
-      </a></div>;
+      </a>
+      </div>;
     }
     if(this.state.rendered === 'TTT'){
       return <Game />;
     }
-    // if(this.state.rendered === 'Accounts'){
-    //   return <Accounts />;
-    // }
+    if(this.state.rendered === 'Accounts'){
+      return <Account />;
+    }
     // if(this.state.rendered === 'Cities'){
     //   return <Citys />;
     // }
     
   }
   render(){  
-    
     return (
       <div className="App">
         <div className="Icons" onClick={this.iconSelect}>
@@ -78,5 +79,4 @@ class App extends React.Component{
     );
   }
 }
-
 export default App;

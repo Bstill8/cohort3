@@ -35,7 +35,7 @@ export class accountController {
   sumAccounts(){
       let sum = 0;
       for (let index = 0; index < this.allAccounts.length; index++) {
-          sum += this.allAccounts[index].amount;
+          sum += Number(this.allAccounts[index].amount);
           
       }
       return sum;

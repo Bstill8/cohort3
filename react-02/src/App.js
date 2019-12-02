@@ -11,12 +11,12 @@ class App extends React.Component{
     }
   }
   iconSelect = (event) => {
-    if(event.target.id == 'I1'){
+    if(event.target.id === 'I1'){
       this.setState({
         rendered: 'home'
       })
     } 
-    if(event.target.id == 'I2'){
+    if(event.target.id === 'I2'){
       this.setState({
         rendered: 'TTT'
       })
@@ -63,10 +63,10 @@ class App extends React.Component{
     return (
       <div className="App">
         <div className="Icons" onClick={this.iconSelect}>
-          <img src={image} className="Icon" id="I1" name="home"/>
-          <img src={image} className="Icon" id="I2" name="TTT"/>
-          <img src={image} className="Icon" id="I3" name="account"/>
-          <img src={image} className="Icon" id="I4" name="cities"/>
+          <img src={image} className="Icon" id="I1" name="home" alt="home"/>
+          <img src={image} className="Icon" id="I2" name="TTT" alt="tictactoe"/>
+          <img src={image} className="Icon" id="I3" name="account" alt="accounts"/>
+          <img src={image} className="Icon" id="I4" name="cities" alt="cities"/>
         </div>
         <header className="App-header">
           <div  id="subroot">

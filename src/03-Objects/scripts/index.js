@@ -1,8 +1,19 @@
-import {del, depost, withdrw, cardAdder, account, accountController, user} from './account.js'
+import {del, depost, withdrw, cardAdder, user} from './account.js'
 
-createAccount.addEventListener('click', () => {
-    user.createAccount(acctName.value, initialBalance.value);
-    main.appendChild(cardAdder());
+accountCreator.addEventListener('click', () => {
+    if(event.target.id == 'createAccount'){
+        user.createAccount(acctName.value, initialBalance.value);
+        main.appendChild(cardAdder());
+    }
+    if(event.target.id == 'small'){
+        mainOut.innerText = 'Smallest Account: ' + user.lowAccount()[1];
+    }
+    if(event.target.id == 'large'){
+        mainOut.innerText = 'Largest Account: ' + user.highAccount()[1];
+    }
+    if(event.target.id == 'sum'){
+        mainOut.innerText = user.sumAccounts();
+    }
 })
 main.addEventListener('click', () => {
     if(event.target.className == 'deposit'){

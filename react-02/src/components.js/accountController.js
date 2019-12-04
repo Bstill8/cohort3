@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Account from './accounts'
 class AccountController extends React.Component{
     constructor(){
         super();
@@ -9,6 +9,16 @@ class AccountController extends React.Component{
         }
     }
     createAccount = (name, balance) => {
+        let errorFlag = false;
+        this.state.allAccounts.forEach((account) => {
+            if(account.name === name){
+                alert("Account with name: \"" + name + "\" already exists");
+                errorFlag = true;
+            }
+        })
+        if(errorFlag){
+            return;
+        }
         let newInstance = new account(name, balance);
         let updateArray = this.state.allAccounts.slice();
         updateArray.push(newInstance);
@@ -55,6 +65,17 @@ class AccountController extends React.Component{
         }
         return [lowest, account];
     }
+    balanceChange = (name, change) => {
+        this.state.allAccounts.forEach((account, index) => {
+            if(name === account.name){
+                let allAccounts = this.state.allAccounts.slice();
+                allAccounts[index].deposit(Number(change))
+                this.setState({
+                    allAccounts: allAccounts,
+                })
+            }
+        })
+    }
     outputState = (event) => {
         if(event.target.id === 'small'){
             this.setState({currentOut: 'small'})
@@ -90,6 +111,9 @@ class AccountController extends React.Component{
                     <input type="button" value="Sum of Accounts" id="sum" onClick={this.outputState}/>
                     <p id="mainOut">{this.outputManager()}</p>
                 </div>
+                {this.state.allAccounts.map((account) => {
+                    return <Account accountName={account.name} balance={account.amount} delete={this.removeAccount} change={this.balanceChange}/>
+                })}
             </div>
         )
     }

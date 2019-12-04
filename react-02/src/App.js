@@ -4,6 +4,7 @@ import './App.css';
 import image from "./expressionless.svg"
 import Game from './components.js/ticTacToe';
 import Account from './components.js/accountController'
+
 class App extends React.Component{
   constructor(){
     super();

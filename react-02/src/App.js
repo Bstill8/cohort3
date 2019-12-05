@@ -4,6 +4,7 @@ import './App.css';
 import image from "./expressionless.svg"
 import Game from './components.js/ticTacToe';
 import Account from './components.js/accountController'
+import Community from './components.js/community'
 
 class App extends React.Component{
   constructor(){
@@ -56,9 +57,9 @@ class App extends React.Component{
     if(this.state.rendered === 'Accounts'){
       return <Account />;
     }
-    // if(this.state.rendered === 'Cities'){
-    //   return <Citys />;
-    // }
+    if(this.state.rendered === 'Cities'){
+      return <Community />;
+    }
     
   }
   render(){  

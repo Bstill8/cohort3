@@ -1,4 +1,4 @@
-import {City, Community} from './community.js'
+import {Community} from './community.js'
 import {cardAdder, updateCard, deleteCard} from './comunityPresentation.js'
 let comm1 = new Community;
 createCity.addEventListener('click', (event) => {

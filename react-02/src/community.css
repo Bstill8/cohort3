@@ -8,7 +8,7 @@
     text-align: center;
     grid-column: 1;
     background-color: gray;
-    height: 100%;
+    height: 800px;
     width: 300px;
     overflow: auto;
 }
@@ -16,8 +16,9 @@
     text-align: center;
     grid-column: 2;
     background-color: rgb(51, 51, 167);
-    height: 100%;
+    height: 800px;
     min-width: 400px;
+    overflow-y: scroll;
 }
 .city{
     background-color: chocolate;

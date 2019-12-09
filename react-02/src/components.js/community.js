@@ -21,7 +21,7 @@ class Community extends React.Component {
         return 'Southern Hemisphere'
     }
     getMostNorthern() {
-        const cityArray = Object.values(this.Cities);
+        const cityArray = Object.values(this.state.Cities);
         let northern;
         let lat = -100;
         for (let a in cityArray) {
@@ -30,7 +30,11 @@ class Community extends React.Component {
                 northern = cityArray[a];
             }
         }
-        return 'Most Northern:\n' + northern.name;
+        if(cityArray.length > 0){
+            return  northern.name;
+        }
+        return ''
+        
     }
     getMostSouthern() {
         let southern;
@@ -42,30 +46,37 @@ class Community extends React.Component {
                 southern = cityArray[a];
             }
         }
-        return 'Most Southern:\n' + southern.name;
+        if(cityArray.length > 0){
+            return southern.name;
+        }
+        return ''
     }
-    getPopulation() {
+    getPopulation(){
         const cityArray = Object.values(this.state.Cities);
-        return 'Total Population:\n' + cityArray.reduce((sum, current) => { return sum += Number(current.population) }, 0)
+        return '\n' + cityArray.reduce((sum, current) => { return sum += Number(current.population) }, 0)
     }
     createCity = (name, latitude, longitude, population, key) => {
-        let newCity = new City(name, latitude, longitude, population, key);
+        let newCity = new city(name, latitude, longitude, population, key);
         let cityUpdate = this.state.Cities;
         cityUpdate[key] = newCity;
         this.setState({
             Cities: cityUpdate,
-            counter: this.state.counter++
+            counter: this.state.counter + 1
         })
     }
     deleteCity = (key) => {
         let cityUpdate = this.state.Cities
-        delete this.cityUpdate[key];
+        delete cityUpdate[key];
         this.setState({
             Cities: cityUpdate
         })
     }
-    populationChange(change) {
-
+    populationChange = (change, key) =>{
+        let Cities = this.state.Cities;
+        Cities[key].population = Number(change) + Number(Cities[key].population);
+        this.setState({
+            Cities: Cities
+        })
     }
     render() {
         return (
@@ -77,24 +88,51 @@ class Community extends React.Component {
                     <input type="text" id="lonText" placeholder="Longitude" ref={ref => this.longitude = ref} /><br />
                     <input type="text" id="popText" placeholder="Population" ref={ref => this.population = ref}/><br />
                     <input type="button" id="createCity" value="create city" onClick={() => {this.createCity(this.name.value, this.latitude.value, this.longitude.value, this.population.value, this.state.counter)}} /><br />
-                    <p id="mostSouthern">Most Northern: <br /></p>
-                    <p id="mostNorthern">Most Southern: <br /></p>
-                    <p id="population">Total Population: <br /></p>
+                    <p id="mostSouthern">Most Northern: <br />{this.getMostNorthern()}</p><br />
+                    <p id="mostNorthern">Most Southern: <br />{this.getMostSouthern()}</p><br />
+                    <p id="population">Total Population: <br />{this.getPopulation()}</p><br />
                 </div>
                 <div id="cities">
                     <h1>Cities</h1>
                     {Object.values(this.state.Cities).map((city) => {
-
-                        return (<City population={city.population} name={city.name} key={city.key}
+                        return (<City population={city.population} name={city.name} id={city.key} key={city.key}
                             latitude={city.latitude} longitude={city.longitude}
                             update={this.populationChange} delete={this.deleteCity} />
                         )
-
                     })}
                 </div>
             </div>
         )
     }
-
+}
+class city {
+    constructor(name, latitude, longitude, population, key){
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.population = population;
+        this.key = key;
+    }
+    show(){
+        return this.name +', '+ this.latitude.toString() +', '+ this.longitude.toString() +', '+ this.population.toString();
+    }
+    movedIn(num){
+        this.population = Number(num) + Number(this.population);
+    }
+    movedOut(num){
+        this.population = Number(this.population) - Number(num);
+    }
+    howBig(){
+        if(this.population > 100000){
+            return 'City';
+        }else if(this.population >= 20000){
+            return 'Large town';
+        }else if(this.population >= 1000){
+            return 'Town';
+        }else if(this.population >= 100){
+            return 'Village';
+        }
+        return 'Hamlet';
+    }
 }
 export default Community

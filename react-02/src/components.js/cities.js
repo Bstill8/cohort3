@@ -24,9 +24,9 @@ class City extends React.Component{
             <div className="city">
                 <h2 className="cityName">{this.props.name}</h2>
                 <input type="text" placeholder="# to move" ref={this.textInput}/><br/>
-                <button className="movedIn" onClick={() => {this.props.update(this.textInput.current.value, this.props.id)}}>Move In</button>
-                <button className="movedOut" onClick={() => {this.props.update(-this.textInput.current.value, this.props.id)}}>Move Out</button><br/>
-                <button className="button" onClick={() => {this.props.delete(this.props.id)}}>Delete</button>
+                <button className="movedIn" onClick={async() => {return await this.props.update(this.textInput.current.value, this.props.id)}}>Move In</button>
+                <button className="movedOut" onClick={async() => {return await this.props.update(-this.textInput.current.value, this.props.id)}}>Move Out</button><br/>
+                <button className="button" onClick={async() => {return await this.props.delete(this.props.id)}}>Delete</button>
                 <p>Latitude: {this.props.latitude}</p>
                 <p>Longitude: {this.props.longitude}</p>
                 <p>Population: {this.props.population}</p>

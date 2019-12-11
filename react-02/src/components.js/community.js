@@ -1,13 +1,15 @@
 import React from 'react'
 import City from './cities'
 import 'C:/code/cohort-3/react-02/src/community.css'
+import {pull, postData} from '../fetch'
+
+let url = 'http://127.0.0.1:5000/'
 
 class Community extends React.Component {
     constructor() {
         super()
         this.state = {
             Cities: {},
-            counter: 0
         }
         this.latitude = React.createRef();
         this.longitude = React.createRef();
@@ -55,27 +57,49 @@ class Community extends React.Component {
         const cityArray = Object.values(this.state.Cities);
         return '\n' + cityArray.reduce((sum, current) => { return sum += Number(current.population) }, 0)
     }
-    createCity = (name, latitude, longitude, population, key) => {
+    createCity = async(name, latitude, longitude, population) => {
+        let key
+        if (Object.keys(this.state.Cities).length !== 0){
+            key = Object.keys(this.state.Cities).reduce((a,b) => {return Number(a) + Number(b) + 1}, 1)
+        }else{
+            key = 1
+        }
         let newCity = new city(name, latitude, longitude, population, key);
-        let cityUpdate = this.state.Cities;
-        cityUpdate[key] = newCity;
+        await postData(url + 'add', newCity)
+        let cityArray = await pull(url);
+        let cityUpdate = {};
+        cityArray.forEach(element => {
+            cityUpdate[element.key] = element;
+        });
         this.setState({
             Cities: cityUpdate,
-            counter: this.state.counter + 1
         })
+        console.log(newCity)
+        console.log(this.state.Cities)
     }
-    deleteCity = (key) => {
-        let cityUpdate = this.state.Cities
-        delete cityUpdate[key];
+    deleteCity = async(key) => {
+        await postData(url + 'delete', {key})
+        let cityArray = await pull(url)
+        let cityUpdate = {};
+        cityArray.forEach(element => {
+            cityUpdate[element.key] = element;
+        });
         this.setState({
             Cities: cityUpdate
         })
     }
-    populationChange = (change, key) =>{
-        let Cities = this.state.Cities;
-        Cities[key].population = Number(change) + Number(Cities[key].population);
+    populationChange = async(change, key) =>{
+        console.log(this.state.Cities)
+        let changed = this.state.Cities[key];
+        changed.population = Number(change) + Number(changed.population);
+        await postData(url + 'update', changed)
+        let cityArray = await pull(url);
+        let cityUpdate = {};
+        cityArray.forEach(element => {
+            cityUpdate[element.key] = element;
+        });
         this.setState({
-            Cities: Cities
+            Cities: cityUpdate
         })
     }
     render() {
@@ -87,7 +111,7 @@ class Community extends React.Component {
                     <input type="text" id="latText" placeholder="Latitude" ref={ref => this.latitude = ref} /><br />
                     <input type="text" id="lonText" placeholder="Longitude" ref={ref => this.longitude = ref} /><br />
                     <input type="text" id="popText" placeholder="Population" ref={ref => this.population = ref}/><br />
-                    <input type="button" id="createCity" value="create city" onClick={() => {this.createCity(this.name.value, this.latitude.value, this.longitude.value, this.population.value, this.state.counter)}} /><br />
+                    <input type="button" id="createCity" value="create city" onClick={() => {this.createCity(this.name.value, this.latitude.value, this.longitude.value, this.population.value)}} /><br />
                     <p id="mostSouthern">Most Northern: <br />{this.getMostNorthern()}</p><br />
                     <p id="mostNorthern">Most Southern: <br />{this.getMostSouthern()}</p><br />
                     <p id="population">Total Population: <br />{this.getPopulation()}</p><br />

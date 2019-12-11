@@ -1,10 +1,20 @@
-import {Community} from './community'
 global.fetch = require('node-fetch');
 
 
 
 export async function pull (url){
-    let response = await fetch(url +'all');
+    let response = await fetch(url +'all',{
+        method:'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow',
+        referrer: 'no-referrer',
+        body: JSON.stringify({})
+    });
     let json = await response.json();
     return await json;
 }

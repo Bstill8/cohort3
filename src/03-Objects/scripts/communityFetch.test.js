@@ -3,6 +3,7 @@ import {Community} from './community'
 global.fetch = require('node-fetch');
 const url = 'http://localhost:5000/'
 test('test pull', async () => {
+    await postData(url + 'clear');
     await postData(url + 'add', {'name': 'Calgary', 'latitude': 60, 'longitude': 120, 'population': 500, 'key':0})
     await postData(url + 'add', {'name': 'Gregary', 'latitude': 60, 'longitude': 120, 'population': 500, 'key':1})
     const data = await pull(url)
@@ -13,11 +14,11 @@ test('test convertArray', async () => {
     const testCom = new Community();
     await postData(url + 'clear');
     await postData(url + 'add', {'name': 'Calgary', 'latitude': 60, 'longitude': 120, 'population': 500, 'key':0});
-    convertArray(await pull(), testCom);
+    convertArray(await pull(url), testCom);
     expect(testCom.Cities[0].name).toEqual('Calgary');
     expect(testCom.Cities.hasOwnProperty(1)).toEqual(false);
     await postData(url + 'add', {'name': 'Gregary', 'latitude': 60, 'longitude': 120, 'population': 500, 'key':1});
-    convertArray(await pull(), testCom);
+    convertArray(await pull(url), testCom);
     expect(testCom.Cities[0].name).toEqual('Calgary');
     expect(testCom.Cities[1].name).toEqual('Gregary');
 })

@@ -74,8 +74,6 @@ class Community extends React.Component {
         this.setState({
             Cities: cityUpdate,
         })
-        console.log(newCity)
-        console.log(this.state.Cities)
     }
     deleteCity = async(key) => {
         await postData(url + 'delete', {key})
@@ -102,6 +100,16 @@ class Community extends React.Component {
             Cities: cityUpdate
         })
     }
+    load = async() => {
+        let cityArray = await pull(url);
+        let cityUpdate = {};
+        cityArray.forEach(element => {
+            cityUpdate[element.key] = element;
+        });
+        this.setState({
+            Cities: cityUpdate
+        })
+    }
     render() {
         return (
             <div id="container">
@@ -111,7 +119,8 @@ class Community extends React.Component {
                     <input type="text" id="latText" placeholder="Latitude" ref={ref => this.latitude = ref} /><br />
                     <input type="text" id="lonText" placeholder="Longitude" ref={ref => this.longitude = ref} /><br />
                     <input type="text" id="popText" placeholder="Population" ref={ref => this.population = ref}/><br />
-                    <input type="button" id="createCity" value="create city" onClick={() => {this.createCity(this.name.value, this.latitude.value, this.longitude.value, this.population.value)}} /><br />
+                    <input type="button" id="createCity" value="Create City" onClick={() => {this.createCity(this.name.value, this.latitude.value, this.longitude.value, this.population.value)}} /><br />
+                    <input type="button" id="load" value="Load" onClick={this.load}/><br/>
                     <p id="mostSouthern">Most Northern: <br />{this.getMostNorthern()}</p><br />
                     <p id="mostNorthern">Most Southern: <br />{this.getMostSouthern()}</p><br />
                     <p id="population">Total Population: <br />{this.getPopulation()}</p><br />

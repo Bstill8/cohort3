@@ -58,8 +58,15 @@ class Community extends React.Component {
         return '\n' + cityArray.reduce((sum, current) => { return sum += Number(current.population) }, 0)
     }
     createCity = async(name, latitude, longitude, population) => {
+        let stateArray = Object.values(this.state.Cities);
+        for(let i = 0; i < stateArray.length; i++){
+            if(Math.abs(stateArray[i].latitude - latitude) < 1 && Math.abs(stateArray[i].longitude - longitude) < 1){
+                alert('There is already a city in this location you must place it somewhere else')
+                return;
+            }
+        }
         let key
-        if (Object.keys(this.state.Cities).length !== 0){
+        if (stateArray.length !== 0){
             key = Object.keys(this.state.Cities).reduce((a,b) => {return Number(a) + Number(b) + 1}, 1)
         }else{
             key = 1

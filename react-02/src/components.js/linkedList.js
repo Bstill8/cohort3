@@ -31,6 +31,9 @@ export class LinkedList{
             }
             return this.search(location - 1, current.next);
         }
+        if(typeof location === 'object'){
+            return location;
+        }
     }
     addNode(location, content, ammount){
         let current = this.search(location);
@@ -45,5 +48,11 @@ export class LinkedList{
         if(current.next != null){
             current.next.prev = current.prev;
         }  
+    }
+    totalAmmounts(count = 0, current = this.header){
+        if(current.next != null){
+            return this.totalAmmounts(count + Number(current.content.ammount), current.next)
+        }
+        return count + Number(current.content.ammount);
     }
 }

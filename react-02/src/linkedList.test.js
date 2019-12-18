@@ -17,7 +17,7 @@ test('test list searcher', ()=> {
     expect(test.search(2)).toEqual(test.header.next.next)
     expect(test.search(0)).toEqual(test.header)
     expect(test.search(4)).toEqual('The item you are searching for does not exist');
-
+    expect(test.search(test.header.next.next)).toEqual(test.header.next.next);
 })
 
 test('test list adder', () => {
@@ -42,4 +42,15 @@ test('test delete', () => {
     test.deleteNode(1);
     expect(test.header.next).toEqual({content: {subject: 'charlie', ammount: 3}, next: null, prev: test.header})
 
+})
+
+test('test total ammount', () => {
+    let test = new LinkedList;
+    test.addNode('end', 'alpha', 1)
+    test.addNode('end', 'beta', 2)
+    test.addNode('end', 'charlie', 3)
+    test.addNode('end', 'delta', 4)
+    expect(test.totalAmmounts()).toEqual(10)
+    test.addNode('end', 'hotel', '5')
+    expect(test.totalAmmounts()).toEqual(15)
 })

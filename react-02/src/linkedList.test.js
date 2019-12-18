@@ -16,6 +16,7 @@ test('test list searcher', ()=> {
     expect(test.search(1)).toEqual(test.header.next);
     expect(test.search(2)).toEqual(test.header.next.next)
     expect(test.search(0)).toEqual(test.header)
+    expect(test.search(4)).toEqual('The item you are searching for does not exist');
 
 })
 

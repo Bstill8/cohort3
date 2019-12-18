@@ -26,9 +26,11 @@ export class LinkedList{
             if(location === 0){
                 return current;
             }
+            if(current === null){
+                return 'The item you are searching for does not exist';
+            }
             return this.search(location - 1, current.next);
         }
-        
     }
     addNode(location, content, ammount){
         let current = this.search(location);
@@ -42,7 +44,6 @@ export class LinkedList{
         current.prev.next = current.next;
         if(current.next != null){
             current.next.prev = current.prev;
-        }
-        
+        }  
     }
 }

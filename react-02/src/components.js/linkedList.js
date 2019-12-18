@@ -11,6 +11,9 @@ export class LinkedList{
             return current;
         }
         if(location === 'beginning'){
+            if(this.header.next === null){
+                return this.header;
+            }
             return this.header.next;
         }
         if(typeof location === 'string'){

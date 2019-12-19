@@ -26,6 +26,8 @@ test('test list adder', () => {
     expect(test.header.next).toEqual({content: {subject: 'hello', ammount: 10}, next: null, prev: test.header})
     test.addNode('end', 'beach', 11);
     expect(test.header.next).toEqual({content: {subject: 'hello', ammount: 10}, next: {content: {subject: 'beach', ammount: 11}, next: null, prev: test.header.next}, prev: test.header})
+    test.addNode(1, 'large', 36);
+    expect(test.header.next.next).toEqual({content: {subject: 'large', ammount: 36}, next:{content: {subject: 'beach', ammount: 11}, next: null, prev: test.header.next.next}, prev:{content: {subject: 'hello', ammount: 10}, next: test.header.next.next, prev: test.header}})
 })
 
 test('test delete', () => {

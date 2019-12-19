@@ -40,7 +40,12 @@ export class LinkedList{
     }
     addNode(location, content, ammount){
         let current = this.search(location);
+        let next = current.next
         current.next = {content: {subject: content, ammount: ammount}, next: current.next, prev: current}
+        if(current.next.next != null){
+            next.prev = current.next;
+        }
+        
     }
     deleteNode(location){
         let current = this.search(location);

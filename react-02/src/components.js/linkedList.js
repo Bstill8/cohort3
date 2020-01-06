@@ -11,6 +11,13 @@ export function list(){
                 <h1>{current.content.ammount}</h1>
             </div>
             <input type="button" id="next" value=">" onClick={() => {if(current.next != null){setCurrent(current = current.next)}}}/>
+            <input type="text" id="searchTxt" placeholder="Search"/>
+            <input type="button" id="searchBttn" value="Search"/>
+            <input type="button" id="delete" value="Delete"/>
+            <input type="button" id="addBefore" value="Insert Before"/>
+            <input type="button" id="addAfter" value="Insert After"/>
+            <input type="text" id="subject" placeholder="Subject"/>
+            <input type="text" id="ammount" placeholder="Ammount"/>
         </div>
     )
 }

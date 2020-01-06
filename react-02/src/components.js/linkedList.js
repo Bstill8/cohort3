@@ -1,4 +1,19 @@
 //using a double linked list to make step backs easier
+import React, { useState } from 'react'
+export function list(){
+    let list = new LinkedList
+    const [current, setCurrent] = useState(list.header)
+    return(
+        <div>
+            <input type="button" id="last" value="<" onClick={() => {if(current.prev != null){setCurrent(current = current.prev)}}}/>
+            <div>
+                <h1>{current.content.subject}</h1>
+                <h1>{current.content.ammount}</h1>
+            </div>
+            <input type="button" id="next" value=">" onClick={() => {if(current.next != null){setCurrent(current = current.next)}}}/>
+        </div>
+    )
+}
 export class LinkedList{
     constructor(){
         this.header = {content: {subject: null, ammount: null}, previous: null, next: null}
@@ -64,3 +79,4 @@ export class LinkedList{
         return count + Number(current.content.ammount);
     }
 }
+

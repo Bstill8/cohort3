@@ -21,6 +21,8 @@ export function list(){
         </div>
     )
 }
+
+
 export class LinkedList{
     constructor(){
         this.header = {content: {subject: null, ammount: null}, previous: null, next: null}

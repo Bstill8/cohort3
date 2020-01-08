@@ -2,9 +2,9 @@
 import React, { useState } from 'react'
 
 
-let list = new LinkedList
 
-export function list(){
+
+function ListController(){
     
     const [current, setCurrent] = useState(list.header)
     return(
@@ -27,7 +27,7 @@ export function list(){
 }
 
 
-export class LinkedList{
+class LinkedList{
     constructor(){
         this.header = {content: {subject: null, ammount: null}, previous: null, next: null}
     }
@@ -92,4 +92,5 @@ export class LinkedList{
         return count + Number(current.content.ammount);
     }
 }
-
+let list = new LinkedList
+export default ListController;

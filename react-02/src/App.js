@@ -5,7 +5,7 @@ import image from "./expressionless.svg"
 import Game from './components.js/ticTacToe';
 import Account from './components.js/accountController'
 import Community from './components.js/community'
-import list from './components.js/linkedList'
+import ListController from './components.js/linkedList'
 
 class App extends React.Component{
   constructor(){
@@ -67,7 +67,7 @@ class App extends React.Component{
       return <Community />;
     }
     if(this.state.rendered === 'LinkedList'){
-      return list();
+      return <ListController/>;
     }
     
   }
@@ -79,6 +79,7 @@ class App extends React.Component{
           <img src={image} className="Icon" id="I2" name="TTT" alt="tictactoe"/>
           <img src={image} className="Icon" id="I3" name="account" alt="accounts"/>
           <img src={image} className="Icon" id="I4" name="cities" alt="cities"/>
+          <img src={image} className="Icon" id="I5" name="linkedList" alt="Linked List"/>
         </div>
         <header className="App-header">
           <div  id="subroot">

@@ -1,7 +1,11 @@
 //using a double linked list to make step backs easier
 import React, { useState } from 'react'
+
+
+let list = new LinkedList
+
 export function list(){
-    let list = new LinkedList
+    
     const [current, setCurrent] = useState(list.header)
     return(
         <div>

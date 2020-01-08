@@ -5,6 +5,7 @@ import image from "./expressionless.svg"
 import Game from './components.js/ticTacToe';
 import Account from './components.js/accountController'
 import Community from './components.js/community'
+import list from './components.js/linkedList'
 
 class App extends React.Component{
   constructor(){
@@ -34,6 +35,11 @@ class App extends React.Component{
         rendered: 'Cities'
       })
     } 
+    if(event.target.id === 'I5'){
+      this.setState({
+        rendered: 'LinkedList'
+      })
+    }
   }
   navigator(){
     if(this.state.rendered === 'home'){
@@ -59,6 +65,9 @@ class App extends React.Component{
     }
     if(this.state.rendered === 'Cities'){
       return <Community />;
+    }
+    if(this.state.rendered === 'LinkedList'){
+      return list();
     }
     
   }

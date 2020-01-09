@@ -22,10 +22,11 @@
 }
 .Icon{
   justify-self: center;
-  height: 20vmin;
+  height: 10vw;
   animation-iteration-count: infinite;
   animation-name: tation;
   animation-duration: 1.5s;
+  border-radius: 50%;
 }
 @keyframes tation{
   0%{
@@ -40,5 +41,5 @@
 }
 .Icons{
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }

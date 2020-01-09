@@ -80,6 +80,7 @@ class App extends React.Component{
           <img src={image} className="Icon" id="I3" name="account" alt="accounts"/>
           <img src={image} className="Icon" id="I4" name="cities" alt="cities"/>
           <img src={image} className="Icon" id="I5" name="linkedList" alt="Linked List"/>
+          <img src={image} className="Icon" id="I6" name="new" alt="new"/>
         </div>
         <header className="App-header">
           <div  id="subroot">

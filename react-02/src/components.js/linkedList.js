@@ -7,21 +7,21 @@ import 'C:/code/cohort-3/react-02/src/linkedList.css'
 function ListController(){
     
     let [current, setCurrent] = useState(list.header);
-    const searchField = React.createRef;
-    const subject = React.createRef;
-    const ammount = React.createRef;
+    const searchField = React.createRef();
+    const subject = React.createRef();
+    const ammount = React.createRef();
     return(
         <div>
-            <input type="button" id="last" value="<" onClick={() => {if(current.prev !== null){setCurrent(current = current.prev)}}}/>
+            <input type="button" id="last" value="<" onClick={() => {if(current.prev !== null && current.prev.prev !== null){setCurrent(current = current.prev)}}}/>
             <div id="content">
                 <h1 id="currentSubject">{current.content.subject}</h1>
-                <h1 id="currentaAmount">{current.content.ammount}</h1>
+                <h1 id="currentAmount">{current.content.ammount}</h1>
             </div>
             <input type="button" id="next" value=">" onClick={() => {if(current.next !== null){setCurrent(current = current.next)}}}/>
             <br/>
             <input type="text" id="searchTxt" placeholder="Search" ref={searchField}/>
             <input type="button" id="searchBttn" value="Search" onClick={() => {
-                let searched = list.search(searchField);
+                let searched = list.search(searchField.current.value);
                 if(typeof searched === "string"){
                     alert(searched);
                 }else{ setCurrent(current = searched); }
@@ -30,18 +30,21 @@ function ListController(){
                 list.removeNode(current);
                 setCurrent(current = current.prev); 
                 }}}/>
+            <br/>
             <input type="button" id="addBefore" value="Insert Before" onClick={() => {
                 if(current.prev !== null){
-                    list.addNode(current.prev, subject, ammount);
+                    list.addNode(current.prev, subject.current.value, ammount.current.value);
+                    setCurrent(current = current.prev)
                 }else{
-                    list.addNode(list.header, subject, ammount);
+                    list.addNode(list.header, subject.current.value, ammount.current.value);
                     setCurrent(current = list.header.next);
                 }
             }}/>
             <input type="button" id="addAfter" value="Insert After" onClick={() => {
-                list.addNode(current, subject, ammount);
+                list.addNode(current, subject.current.value, ammount.current.value);
                 setCurrent(current = current.next);  
             }}/>
+            <br/>
             <input type="text" id="subject" placeholder="Subject" ref={subject}/>
             <input type="text" id="ammount" placeholder="Ammount" ref={ammount}/>
         </div>
@@ -68,6 +71,9 @@ export class LinkedList{
         }
         if(typeof location === 'string'){
             if(location !== current.content.subject){
+                if(location === ""){
+                    return "Please enter something in the search field."
+                }
                 if(current.next === null){
                     return 'Subject "' + location + '" does not exist';
                 }
@@ -114,5 +120,5 @@ export class LinkedList{
         return count + Number(current.content.ammount);
     }
 }
-let list = new LinkedList()
+let list = new LinkedList();
 export default ListController;

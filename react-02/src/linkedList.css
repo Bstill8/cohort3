@@ -1,0 +1,9 @@
+#last, #next, #content {
+    display: inline-block;
+}
+#currentSubject{
+    font-size: 30px;
+}
+#currentAmmount{
+    font-size: 50px;
+}

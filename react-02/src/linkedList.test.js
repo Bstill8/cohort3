@@ -2,7 +2,7 @@ import {LinkedList} from './components.js/linkedList'
 
 
 test('test list searcher', ()=> {
-    let test = new LinkedList;
+    let test = new LinkedList();
     
     expect(test.search('end')).toEqual(test.header)
     test.header.next = {content: {subject: 'alpha', ammount: 45}, next: null, prev: test.header};
@@ -21,7 +21,7 @@ test('test list searcher', ()=> {
 })
 
 test('test list adder', () => {
-    let test = new LinkedList;
+    let test = new LinkedList();
     test.addNode('end', 'hello', 10);
     expect(test.header.next).toEqual({content: {subject: 'hello', ammount: 10}, next: null, prev: test.header})
     test.addNode('end', 'beach', 11);
@@ -31,23 +31,23 @@ test('test list adder', () => {
 })
 
 test('test delete', () => {
-    let test = new LinkedList;
+    let test = new LinkedList();
     test.addNode('end', 'alpha', 1)
     test.addNode('end', 'beta', 2)
     test.addNode('end', 'charlie', 3)
     test.addNode('end', 'delta', 4)
     expect(test.header.next.next.next.next).toEqual({content: {subject: 'delta', ammount: 4}, next: null, prev: test.header.next.next.next});
-    test.deleteNode('end');
+    test.removeNode('end');
     expect(test.header.next.next.next).toEqual({content: {subject: 'charlie', ammount: 3}, next: null, prev: test.header.next.next});
-    test.deleteNode('beginning');
+    test.removeNode('beginning');
     expect(test.header.next).toEqual({content: {subject: 'beta', ammount: 2}, next: {content: {subject: 'charlie', ammount: 3}, next: null, prev: test.header.next}, prev: test.header})
-    test.deleteNode(1);
+    test.removeNode(1);
     expect(test.header.next).toEqual({content: {subject: 'charlie', ammount: 3}, next: null, prev: test.header})
 
 })
 
 test('test total ammount', () => {
-    let test = new LinkedList;
+    let test = new LinkedList();
     test.addNode('end', 'alpha', 1)
     test.addNode('end', 'beta', 2)
     test.addNode('end', 'charlie', 3)

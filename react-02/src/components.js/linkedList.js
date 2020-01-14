@@ -1,35 +1,57 @@
 //using a double linked list to make step backs easier
 import React, { useState } from 'react'
-
+import 'C:/code/cohort-3/react-02/src/linkedList.css'
 
 
 
 function ListController(){
     
-    const [current, setCurrent] = useState(list.header)
+    let [current, setCurrent] = useState(list.header);
+    const searchField = React.createRef;
+    const subject = React.createRef;
+    const ammount = React.createRef;
     return(
         <div>
-            <input type="button" id="last" value="<" onClick={() => {if(current.prev != null){setCurrent(current = current.prev)}}}/>
-            <div>
-                <h1>{current.content.subject}</h1>
-                <h1>{current.content.ammount}</h1>
+            <input type="button" id="last" value="<" onClick={() => {if(current.prev !== null){setCurrent(current = current.prev)}}}/>
+            <div id="content">
+                <h1 id="currentSubject">{current.content.subject}</h1>
+                <h1 id="currentaAmount">{current.content.ammount}</h1>
             </div>
-            <input type="button" id="next" value=">" onClick={() => {if(current.next != null){setCurrent(current = current.next)}}}/>
-            <input type="text" id="searchTxt" placeholder="Search"/>
-            <input type="button" id="searchBttn" value="Search"/>
-            <input type="button" id="delete" value="Delete"/>
-            <input type="button" id="addBefore" value="Insert Before"/>
-            <input type="button" id="addAfter" value="Insert After"/>
-            <input type="text" id="subject" placeholder="Subject"/>
-            <input type="text" id="ammount" placeholder="Ammount"/>
+            <input type="button" id="next" value=">" onClick={() => {if(current.next !== null){setCurrent(current = current.next)}}}/>
+            <br/>
+            <input type="text" id="searchTxt" placeholder="Search" ref={searchField}/>
+            <input type="button" id="searchBttn" value="Search" onClick={() => {
+                let searched = list.search(searchField);
+                if(typeof searched === "string"){
+                    alert(searched);
+                }else{ setCurrent(current = searched); }
+            }}/>
+            <input type="button" id="delete" value="Delete" onClick={() => {if(current !== list.header){ 
+                list.removeNode(current);
+                setCurrent(current = current.prev); 
+                }}}/>
+            <input type="button" id="addBefore" value="Insert Before" onClick={() => {
+                if(current.prev !== null){
+                    list.addNode(current.prev, subject, ammount);
+                }else{
+                    list.addNode(list.header, subject, ammount);
+                    setCurrent(current = list.header.next);
+                }
+            }}/>
+            <input type="button" id="addAfter" value="Insert After" onClick={() => {
+                list.addNode(current, subject, ammount);
+                setCurrent(current = current.next);  
+            }}/>
+            <input type="text" id="subject" placeholder="Subject" ref={subject}/>
+            <input type="text" id="ammount" placeholder="Ammount" ref={ammount}/>
         </div>
     )
 }
 
 
-class LinkedList{
+export class LinkedList{
     constructor(){
-        this.header = {content: {subject: null, ammount: null}, previous: null, next: null}
+        this.header = {content: {subject: null, ammount: null}, prev: null, next: null}
     }
     search(location, current = this.header){
         if(location === 'end'){
@@ -45,9 +67,9 @@ class LinkedList{
             return this.header.next;
         }
         if(typeof location === 'string'){
-            if(location != current.content.subject){
+            if(location !== current.content.subject){
                 if(current.next === null){
-                    return 'Subject \"' + location + '\" does not exist';
+                    return 'Subject "' + location + '" does not exist';
                 }
                 return this.search(location, current.next)
             }
@@ -75,7 +97,7 @@ class LinkedList{
         }
         
     }
-    deleteNode(location){
+    removeNode(location){
         let current = this.search(location);
         if(typeof current === 'string'){
             return current;
@@ -92,5 +114,5 @@ class LinkedList{
         return count + Number(current.content.ammount);
     }
 }
-let list = new LinkedList
+let list = new LinkedList()
 export default ListController;

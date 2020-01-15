@@ -6,6 +6,7 @@ import Game from './components.js/ticTacToe';
 import Account from './components.js/accountController'
 import Community from './components.js/community'
 import ListController from './components.js/linkedList'
+import FifoLifoApp from './components.js/fifolifo/FifoLifoApp'
 
 class App extends React.Component{
   constructor(){
@@ -40,6 +41,11 @@ class App extends React.Component{
         rendered: 'LinkedList'
       })
     }
+    if(event.target.id === 'I6'){
+      this.setState({
+        rendered: 'FifoLifoApp'
+      })
+    }
   }
   navigator(){
     if(this.state.rendered === 'home'){
@@ -69,6 +75,9 @@ class App extends React.Component{
     if(this.state.rendered === 'LinkedList'){
       return <ListController/>;
     }
+    if(this.state.rendered === 'FifoLifoApp'){
+      return <FifoLifoApp/>;
+    }
     
   }
   render(){  
@@ -80,7 +89,7 @@ class App extends React.Component{
           <img src={image} className="Icon" id="I3" name="account" alt="accounts"/>
           <img src={image} className="Icon" id="I4" name="cities" alt="cities"/>
           <img src={image} className="Icon" id="I5" name="linkedList" alt="Linked List"/>
-          <img src={image} className="Icon" id="I6" name="new" alt="new"/>
+          <img src={image} className="Icon" id="I6" name="fifolifo" alt="Fifo Lifo"/>
         </div>
         <header className="App-header">
           <div  id="subroot">

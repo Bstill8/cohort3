@@ -1,0 +1,24 @@
+.lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.1fr 1fr;
+    column-gap: 50px;
+    justify-items: center;
+    align-items: end;
+    height: 500px;
+    background-color: white;
+}
+
+.lists > * {
+   width: 75px;
+   display: inline-block;
+   text-align: center;
+}
+
+.shape {
+    padding: 20px;
+}
+.QStext{
+    color: black;
+    border-bottom:black;
+}

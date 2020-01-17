@@ -3,7 +3,6 @@ export function show(){
     let sarr = [];
     for(var i = 0; i<list.children.length; i++){
         sarr[i] = list.children[i].getAttribute('num');
-        console.log(list.children[i].innerHTML)
     }
     return sarr;
 }
@@ -18,7 +17,7 @@ export function add(){
 }
 var cardNumber = 0;
 export function addCard(){
-    cardNumber ++;
+    cardNumber++;
     //create left card
     let newCard = document.createElement('div');
     let text = document.createElement('p');
@@ -46,6 +45,7 @@ export function addCard(){
     rightCard.className = "Rcard";
     rightCard.appendChild(rText);
     return [newCard, rightCard];
+
 }
 export function mainAdd(){
     let card = addCard();
@@ -53,7 +53,6 @@ export function mainAdd(){
     right.appendChild(card[1]);
 }
 export function addBefore(cardId, buttonClass){
-    console.log(cardId);
     if(buttonClass == 'addBefore'){    
         let node;
         let cards = [];
@@ -86,4 +85,7 @@ export function delet(cardId, buttonClass){
             document.getElementById(cardId).remove();
             right.removeChild(right.lastChild);
     }
+}
+export function reset(){
+    cardNumber = 0;
 }

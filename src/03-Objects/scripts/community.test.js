@@ -1,5 +1,9 @@
 import {City, Community} from './community'
 import {cardAdder, updateCard, deleteCard} from './comunityPresentation'
+
+beforeEach(() => {
+    document.body.innerHTML = '';
+});
 test('show method', () => {
     let test1 = new City('test1', 50, 100, 20000);
     let test2 = new City('test2', 40, 80, 100);
@@ -38,17 +42,17 @@ test('test howBig', () => {
 })
 test('test which hemisphere', () => {
     let community1 = new Community();
-    community1.createCity('test1', 50, 100, 20000);
-    community1.createCity('test2', -40, 80, 100);
-    expect(community1.whichSphere('test1')).toEqual('Northern Hemisphere');
-    expect(community1.whichSphere('test2')).toEqual('Southern Hemisphere');
+    community1.createCity('test1', 50, 100, 20000, 0);
+    community1.createCity('test2', -40, 80, 100, 1);
+    expect(community1.whichSphere(0)).toEqual('Northern Hemisphere');
+    expect(community1.whichSphere(1)).toEqual('Southern Hemisphere');
 })
 test('test getMostNorthern', () => {
     let community1 = new Community();
     community1.createCity('test2', 40, 80, 100);
-    expect(community1.getMostNorthern()).toEqual('test2');
+    expect(community1.getMostNorthern()).toEqual('Most Northern:\ntest2');
     community1.createCity('test1', 50, 100, 20000);
-    expect(community1.getMostNorthern()).toEqual('test1');
+    expect(community1.getMostNorthern()).toEqual('Most Northern:\ntest1');
 })
 test('test getMostSouthern', () => {
     let community1 = new Community();
@@ -64,25 +68,30 @@ test('test getMostSouthern', () => {
 test('test getPopulation', () => {
     let community1 = new Community();
     community1.createCity('test2', 40, 80, 100);
-    expect(community1.getPopulation()).toEqual(100);
+    expect(community1.getPopulation()).toEqual("Total Population:\n100");
     community1.createCity('test1', 50, 100, 20000);
-    expect(community1.getPopulation()).toEqual(20100);
+    expect(community1.getPopulation()).toEqual("Total Population:\n20000");
 })
 test('test createCity', () => {
     let community1 = new Community();
-    community1.createCity('test2', -50, 80, 100);
-    community1.createCity('test1', 50, 100, 20000);
-    expect(community1.Cities).toEqual({"test1": {"latitude": 50, "longitude": 100, "name": "test1", "population": 20000}, "test2": {"latitude": -50, "longitude": 80, "name": "test2", "population": 100}});
-    community1.createCity('el', 20, 15, 10);
-    expect(community1.Cities).toEqual({"test1": {"latitude": 50, "longitude": 100, "name": "test1", "population": 20000}, "test2": {"latitude": -50, "longitude": 80, "name": "test2", "population": 100}, 'el': {"latitude": 20, "longitude": 15, "name": "el", "population": 10}});
+    let test1 = new City('test1', 50, 100, 20000, 0);
+    let test2 = new City('test2', -50, 80, 100, 1);
+    let el = new City('el', 20, 15, 10, 2);
+    community1.createCity('test2', -50, 80, 100, 1);
+    community1.createCity('test1', 50, 100, 20000, 0);
+    expect(JSON.stringify(community1.Cities)).toMatch(JSON.stringify({"key": {"counter":0, "increment": function(){this.counter++}, "name":null, "latitude":null, "longitude":null, "population":0},"0": test1, "1": test2}));
+    community1.createCity('el', 20, 15, 10, 2);
+    expect(JSON.stringify(community1.Cities)).toMatch(JSON.stringify({"key": {"counter":0, "increment": function(){this.counter++}, "name":null, "latitude":null, "longitude":null, "population":0},"0": test1, "1": test2, "2": el}));
 })
 test('test deleteCity', () => {
     let community1 = new Community();
-    community1.createCity('test2', -50, 80, 100);
-    community1.createCity('test1', 50, 100, 20000);
-    expect(community1.Cities).toEqual({"test1": {"latitude": 50, "longitude": 100, "name": "test1", "population": 20000}, "test2": {"latitude": -50, "longitude": 80, "name": "test2", "population": 100}});
-    community1.deleteCity('test1')
-    expect(community1.Cities).toEqual({"test2": {"latitude": -50, "longitude": 80, "name": "test2", "population": 100}});
+    let test1 = new City('test1', 50, 100, 20000, 1);
+    let test2 = new City('test2', -50, 80, 100, 0);
+    community1.createCity('test2', -50, 80, 100, 0);
+    community1.createCity('test1', 50, 100, 20000, 1);
+    expect(JSON.stringify(community1.Cities)).toMatch(JSON.stringify({"key": {"counter":0, "increment": function(){this.counter++}, "name":null, "latitude":null, "longitude":null, "population":0}, "0": test2, "1": test1}));
+    community1.deleteCity(0)
+    expect(JSON.stringify(community1.Cities)).toMatch(JSON.stringify({"key": {"counter":0, "increment": function(){this.counter++}, "name":null, "latitude":null, "longitude":null, "population":0}, "1": test1}));
 
 
 })

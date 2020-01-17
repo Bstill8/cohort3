@@ -42,10 +42,10 @@ export class accountController {
   }
 
   highAccount(){
-    let highest = 0;
+    let highest = this.allAccounts[0].amount;
     let account;
     for (let index = 0; index < this.allAccounts.length; index++) {
-        if(this.allAccounts[index].amount > highest) {
+        if(this.allAccounts[index].amount >= highest) {
             highest = this.allAccounts[index].amount;
             account = this.allAccounts[index].name;
         }  
@@ -57,7 +57,7 @@ export class accountController {
     let lowest = this.allAccounts[0].amount;
     let account;
     for (let index = 0; index < this.allAccounts.length; index++) {
-        if(this.allAccounts[index].amount < lowest) {
+        if(this.allAccounts[index].amount <= lowest) {
           lowest = this.allAccounts[index].amount;
           account = this.allAccounts[index].name;
         }  
@@ -68,7 +68,7 @@ export class accountController {
 export const user = new accountController;
 var cardNumber;
 export function cardAdder(){
-  cardNumber = main.children.length -2;
+  cardNumber = document.getElementById('main').children.length -2;
   let newCard = document.createElement('div');
   let text = document.createElement('p');
   let textN = document.createTextNode(user.allAccounts[cardNumber].name);

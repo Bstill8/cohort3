@@ -1,5 +1,8 @@
-import {account, user, cardAdder, del, depost} from './account.js.js'
+import {account, user, cardAdder, del, depost, withdrw} from './account.js'
 
+beforeEach(()=> {
+    document.body.innerHTML = '';
+})
 test('create empty account', () => {
     var newInstance = new account('first', 25);
     var secondInstance = new account('second', 30);
@@ -74,15 +77,15 @@ test('test lowest accounts function', () => {
     user.allAccounts = [];
     user.createAccount("Savings", 25);
     user.createAccount("Car fund", 100);
-    expect(user.lowAccount()).toEqual(25);
+    expect(user.lowAccount()).toEqual([25, 'Savings']);
     user.createAccount("Holiday", 50);
-    expect(user.lowAccount()).toEqual(25);
+    expect(user.lowAccount()).toEqual([25, 'Savings']);
 })
 function cardTest(div){
     let counter = 0;
     let arr = [];
-    for(let i = 0; i < div.children.length; i++){
-        arr[i] = div.children[i].id;
+    for(let i = 2; i < div.children.length; i++){
+        arr[i-2] = div.children[i].id;
         counter ++;
     }
     return [counter, arr];
@@ -91,10 +94,12 @@ test('test the card adder', () => {
     var main = document.createElement('div');
     main.id = 'main'
     document.body.appendChild(main);
+    main.appendChild(document.createElement('div'));
+    main.appendChild(document.createElement('div'));
     main.appendChild(cardAdder());
-    expect(cardTest(main)).toEqual([1,['card 0']]);
+    expect(cardTest(main)).toEqual([1,['card0']]);
     main.appendChild(cardAdder());
-    expect(cardTest(main)).toEqual([2,['card 0', 'card 1']]);
+    expect(cardTest(main)).toEqual([2,['card0', 'card1']]);
 })
 test('test delete reasignment function', () => {
     user.allAccounts = [{name: 'first', amount: 10},{name: 'second', amount: 20},{name: 'third', amount: 30},{name: 'fourth', amount: 40}];
@@ -102,7 +107,8 @@ test('test delete reasignment function', () => {
     var a = document.createElement('div');
     main.id = 'main'
     document.body.appendChild(main);
-    main.appendChild(a);
+    main.appendChild(document.createElement('div'));
+    main.appendChild(document.createElement('div'));
     main.appendChild(cardAdder());
     main.appendChild(cardAdder());
     main.appendChild(cardAdder());
@@ -123,10 +129,10 @@ test('test deposit button', () => {
     let inst4 = new account('fourth', 40);
     user.allAccounts = [inst1, inst2, inst3, inst4];
     var main = document.createElement('div');
-    var a = document.createElement('div');
     main.id = 'main'
     document.body.appendChild(main);
-    main.appendChild(a);
+    main.appendChild(document.createElement('div'));
+    main.appendChild(document.createElement('div'));
     main.appendChild(cardAdder());
     main.appendChild(cardAdder());
     main.appendChild(cardAdder());
@@ -149,10 +155,10 @@ test('test withdraw', () => {
     let inst4 = new account('fourth', 40);
     user.allAccounts = [inst1, inst2, inst3, inst4];
     var main = document.createElement('div');
-    var a = document.createElement('div');
     main.id = 'main'
     document.body.appendChild(main);
-    main.appendChild(a);
+    main.appendChild(document.createElement('div'));
+    main.appendChild(document.createElement('div'));
     main.appendChild(cardAdder());
     main.appendChild(cardAdder());
     main.appendChild(cardAdder());
@@ -161,7 +167,7 @@ test('test withdraw', () => {
     card0.childNodes[1].value = 7;
     card0.childNodes[2].click();
     expect(user.allAccounts[0].amount).toEqual(3);
-    expect(balance0.innerText).toEqual('Balance: $5');
+    expect(balance0.innerText).toEqual('Balance: $3');
     card3.childNodes[1].value = 40;
     card3.childNodes[2].click()
     expect(user.allAccounts[3].amount).toEqual(0);

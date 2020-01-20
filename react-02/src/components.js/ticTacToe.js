@@ -198,7 +198,6 @@ function Square(props){
       })
   
       if (this.difficulty === "hard" && secondHighest > 0 && Math.random() <= 0.2) {
-        console.log("Suboptimal move")
         return secondIndex
       }
       return index;
@@ -233,12 +232,12 @@ function Square(props){
             <h3>Options:</h3>
             <div>
               <input type="radio" id="idPVP" name="players" value="pvp" />Multiplayer
-              <input type="radio" id="idPVE" name="players" value="pve" defaultChecked />vs. AI
+              <input type="radio" id="idPVE" name="players" value="pve" defaultChecked />vs. Computer
             </div>
   
             <div>
               <input type="radio" id="idPlayerStart" name="turn order" value="player start" defaultChecked />Player Starts
-              <input type="radio" id="idAIStart" name="turn order" value="ai start" />AI Starts
+              <input type="radio" id="idAIStart" name="turn order" value="ai start" />Computer Starts
             </div>
   
             <div>

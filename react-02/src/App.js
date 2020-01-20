@@ -7,6 +7,8 @@ import Account from './components.js/accountController'
 import Community from './components.js/community'
 import ListController from './components.js/linkedList'
 import FifoLifoApp from './components.js/fifolifo/FifoLifoApp'
+import ColorContext  from "./ThemeContext"
+import {FontContext} from "./ThemeContext"
 
 class App extends React.Component{
   constructor(){

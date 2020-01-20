@@ -1,4 +1,4 @@
-import {delet, addAfter, addBefore, add, show, mainAdd, reset} from './functions'
+import {delet, addAfter, addBefore, add, show, mainAdd, reset, addCard} from './functions'
 beforeEach(() => {
     leftDiv.innerHTML = '';
     rightDiv.innerHTML = '';
@@ -48,6 +48,8 @@ rightDiv.id = "right";
 test('test add card function', () => {
     let ACFl = leftDiv;
     expect(cardCounter(ACFl)).toEqual([0,[]]);
+    ACFl.appendChild(addCard()[0]);
+    expect(cardCounter(ACFl)).toEqual([1,['card 1']])
 });
 
 test('test add card button', () => {

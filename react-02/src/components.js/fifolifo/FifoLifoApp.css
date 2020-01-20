@@ -6,7 +6,9 @@
     justify-items: center;
     align-items: end;
     height: 500px;
+    width: 300px;
     background-color: white;
+    overflow-y: scroll;
 }
 
 .lists > * {
@@ -20,5 +22,4 @@
 }
 .QStext{
     color: black;
-    border-bottom:black;
 }

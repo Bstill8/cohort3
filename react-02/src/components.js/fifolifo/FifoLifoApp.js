@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Queue, Stack, BagController } from './fifoLifo.js'
 import List from './List.js'
 import './FifoLifoApp.css'
+import ThemeContext from '../../ThemeContext'
 
 const fifo = new Queue();
 const lifo = new Stack();
@@ -35,18 +36,23 @@ const FifoLifoApp = () => {
   }
 
   return (
-    <div>
-      <div>
-        <button onClick={handlePutIn}>Put In</button>
-        <button onClick={handleTakeOut}>Take Out</button>
-      </div>
-      <div className="lists">
-        <h3 className="QStext">Queue</h3>
-        <h3 className="QStext">Stack</h3>
-        <List list={queue} type="queue" />
-        <List list={stack} type="stack" />
-      </div>
-    </div>
+    <ThemeContext.Consumer>
+      {({ color, fontSize}) => (
+        <div style={{ color: color, fontSize: fontSize }}>
+          <div>
+            <button onClick={handlePutIn}>Put In</button>
+            <button onClick={handleTakeOut}>Take Out</button>
+          </div>
+          <div className="lists">
+            <h3 className="QStext" style={{ color: color, fontSize: fontSize }}>Queue</h3>
+            <h3 className="QStext" style={{ color: color, fontSize: fontSize }}>Stack</h3>
+            <List list={queue} type="queue" />
+            <List list={stack} type="stack" />
+          </div>
+        </div>
+      )}
+    </ThemeContext.Consumer>
+
   );
 }
 

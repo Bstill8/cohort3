@@ -26,7 +26,6 @@
   animation-iteration-count: infinite;
   animation-name: tation;
   animation-duration: 1.5s;
-  border-radius: 50%;
 }
 @keyframes tation{
   0%{

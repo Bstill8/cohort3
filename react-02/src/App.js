@@ -117,13 +117,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="Icons" onClick={this.iconSelect}>
-          <img src={image} className="Icon" id="I1" name="home" alt="home" />
-          <img src={image} className="Icon" id="I2" name="TTT" alt="tictactoe" />
-          <img src={image} className="Icon" id="I3" name="account" alt="accounts" />
-          <img src={image} className="Icon" id="I4" name="cities" alt="cities" />
-          <img src={image} className="Icon" id="I5" name="linkedList" alt="Linked List" />
-          <img src={image} className="Icon" id="I6" name="fifolifo" alt="Fifo Lifo" />
-          <img src={image} className="Icon" id="I7" name="settings" alt="settings" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Font_Awesome_5_brands_react.svg/512px-Font_Awesome_5_brands_react.svg.png" className="Icon" id="I1" name="home" alt="home" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tic_tac_toe.svg/522px-Tic_tac_toe.svg.png" className="Icon" id="I2" name="TTT" alt="tictactoe" />
+          <img src="http://cdn.onlinewebfonts.com/svg/img_361598.png" className="Icon" id="I3" name="account" alt="accounts" />
+          <img src="https://cdn.onlinewebfonts.com/svg/img_460058.png" className="Icon" id="I4" name="cities" alt="cities" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Simpleicons_Interface_link-symbol-of-two-chains-links-linked.svg" className="Icon" id="I5" name="linkedList" alt="Linked List" />
+          <img src="https://cdn.onlinewebfonts.com/svg/img_465073.png" className="Icon" id="I6" name="fifolifo" alt="Fifo Lifo" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Feedbin-Icon-settings.svg/512px-Feedbin-Icon-settings.svg.png" className="Icon" id="I7" name="settings" alt="settings" />
         </div>
         <header className="App-header">
           <div id="subroot">

@@ -6,6 +6,7 @@ function Settings() {
             <ThemeContext.Consumer>
                 {({ color, fontSize, changeColor, changeFont }) => (
                     <div style={{color: color, fontSize: fontSize}}>
+                        <h1>Settings</h1>
                         <input type="radio" name="color" value="red" checked={color === "#ff0000"} onClick={() => changeColor('red')} />Red
                         <input type="radio" name="color" value="blue" checked={color === "#4287f5"} onClick={() => changeColor('blue')} />Blue
                         <input type="radio" name="color" value="green" checked={color === "#45f542"} onClick={() => changeColor('green')} />Green <br />

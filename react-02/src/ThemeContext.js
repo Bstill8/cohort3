@@ -14,7 +14,7 @@ export const theme = {
     
 }
 const ThemeContext = React.createContext({
-    color: theme.color.blue,
+    color: theme.color.green,
     fontSize: theme.fontSize.medium,
     changeColor: (change) => {
         ThemeContext.color = theme.color[change];

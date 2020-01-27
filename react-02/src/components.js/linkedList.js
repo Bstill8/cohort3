@@ -70,7 +70,7 @@ export class LinkedList {
             }
             return current;
         }
-        if (location === 'beginning') {
+        if (location === 'end') {
             if (this.header.next === null) {
                 return this.header;
             }

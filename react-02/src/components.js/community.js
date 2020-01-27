@@ -24,9 +24,9 @@ class Community extends React.Component {
         return 'Southern Hemisphere'
     }
     getMostNorthern() {
-        const cityArray = Object.values(this.state.Cities);
         let northern;
         let lat = -100;
+        const cityArray = Object.values(this.state.Cities);
         for (let a in cityArray) {
             if (cityArray[a].latitude > lat && cityArray[a].latitude != null) {
                 lat = cityArray[a].latitude;
@@ -60,9 +60,13 @@ class Community extends React.Component {
     }
     createCity = async (name, latitude, longitude, population) => {
         let stateArray = Object.values(this.state.Cities);
+        if(latitude > 90 || latitude < -90 || longitude > 180 || longitude < -180 || typeof latitude === 'number' || typeof longitude === 'number'){
+            alert('This city does not have valid coordinates');
+            return;
+        }
         for (let i = 0; i < stateArray.length; i++) {
             if (Math.abs(stateArray[i].latitude - latitude) < 1 && Math.abs(stateArray[i].longitude - longitude) < 1) {
-                alert('There is already a city in this location you must place it somewhere else')
+                alert('There is already a city in this location you must place it somewhere else');
                 return;
             }
         }

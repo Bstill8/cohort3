@@ -8,3 +8,4 @@ def test_answer():
 
 def test_sum():
     assert syntax.sum(1,3) == 4
+    assert syntax.sum(6,8) == 14

@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import image from "./expressionless.svg"
 import Game from './components.js/ticTacToe';
 import Account from './components.js/accountController'
 import Community from './components.js/community'
@@ -26,7 +25,7 @@ class App extends React.Component {
     }
     this.state = {
       rendered: 'home',
-      color: theme.color.blue,
+      color: theme.color.green,
       font: theme.fontSize.medium,
       changeColor: this.changeColor,
       changeFont: this.changeFont

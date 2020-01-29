@@ -10,6 +10,11 @@ function ListController() {
     const searchField = React.createRef();
     const subject = React.createRef();
     const ammount = React.createRef();
+    let checkCharacter = (event) => {    
+        if(event.which === 220){
+            event.preventDefault()
+        }
+    }
     return (
         <ThemeContext.Consumer>
             {({ color, fontSize}) => (
@@ -49,8 +54,8 @@ function ListController() {
                         setCurrent(current = current.next);
                     }} />
                     <br />
-                    <input type="text" id="subject" placeholder="Subject" ref={subject} />
-                    <input type="text" id="ammount" placeholder="Ammount" ref={ammount} />
+                    <input type="text" id="subject" placeholder="Subject" ref={subject} onKeyDown={checkCharacter}/>
+                    <input type="number" id="ammount" placeholder="Ammount" ref={ammount} />
                 </div>
             )}
         </ThemeContext.Consumer>
@@ -64,13 +69,13 @@ export class LinkedList {
         this.header = { content: { subject: null, ammount: null }, prev: null, next: null }
     }
     search(location, current = this.header) {
-        if (location === 'end') {
+        if (location === '\\end') {
             if (current.next != null) {
                 return this.search(location, current.next);
             }
             return current;
         }
-        if (location === 'end') {
+        if (location === '\\start') {
             if (this.header.next === null) {
                 return this.header;
             }

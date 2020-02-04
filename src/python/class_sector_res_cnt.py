@@ -31,16 +31,20 @@ def class_sector_pop():
     res_cnt["total"] = total_lines
     return res_cnt
 
-def format():
+def reporter():
     to_be_formatted = class_sector_pop()
-    print("=============================================Class Polulations=============================================")
-    for CLASS in to_be_formatted["classes"]:
-        print(CLASS + ":  " + str(to_be_formatted["classes"][CLASS]))
-    print("=============================================Sector Polulations=============================================")
-    for SECTOR in to_be_formatted["sectors"]:
-        print(SECTOR + ":  " + str(to_be_formatted["sectors"][SECTOR]))
-    print("===================================================Totals===================================================")
-    print("Total Lines:  " + str(to_be_formatted["total"]))
-    print("Total Population:  " + str(to_be_formatted["classes"]["Residential"] + to_be_formatted["classes"]["Industrial"]))
+    with open("report.txt", "w") as file:
+        file.write("=============================================Class Polulations=============================================\n")
+        for CLASS in to_be_formatted["classes"]:
+            file.write(CLASS + ":  " + str(to_be_formatted["classes"][CLASS]) + "\n")
+        file.write("=============================================Sector Polulations=============================================\n")
+        for SECTOR in to_be_formatted["sectors"]:
+            file.write(SECTOR + ":  " + str(to_be_formatted["sectors"][SECTOR]) + "\n")
+        file.write("===================================================Totals===================================================\n")
+        file.write("Total Lines:  " + str(to_be_formatted["total"]) + "\n")
+        file.write("Total Population:  " + str(to_be_formatted["classes"]["Residential"] + to_be_formatted["classes"]["Industrial"]) + "\n")
+        
 
-format()
+
+
+reporter()

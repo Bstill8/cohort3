@@ -7,4 +7,4 @@ def test_attributes_in_classes_sectors():
     assert "Residential" in classes_sectors["classes"]
     assert "CENTRE" in classes_sectors["sectors"]
     assert "WEST" in classes_sectors["sectors"]
-
+    assert "total" in classes_sectors

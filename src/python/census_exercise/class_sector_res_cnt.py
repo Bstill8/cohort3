@@ -1,6 +1,6 @@
 def class_sector_pop():
     res_cnt = {"classes": {}, "sectors": {}, "total": 0}
-    with open("Census_by_Community_2018.csv") as file:
+    with open("C:/code/cohort-3/src/python/census_exercise/Census_by_Community_2018.csv") as file:
         total_lines = 0
         next(file)
         for line in file:
@@ -33,7 +33,7 @@ def class_sector_pop():
 
 def reporter():
     to_be_formatted = class_sector_pop()
-    with open("report.txt", "w") as file:
+    with open("C:/code/cohort-3/src/python/census_exercise/report.txt", "w") as file:
         file.write("=============================================Class Polulations=============================================\n")
         for CLASS in to_be_formatted["classes"]:
             file.write(CLASS + ":  " + str(to_be_formatted["classes"][CLASS]) + "\n")

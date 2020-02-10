@@ -9,6 +9,8 @@ products = workbook["Product Table"]
 def store(sheet, flag):
     return_dict = {}
     for row in sheet:
+        if row[0].value == None:
+            break
         if row[0].value == "ID":
             continue
         if flag == "customer":

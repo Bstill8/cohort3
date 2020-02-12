@@ -13,12 +13,16 @@ int main(){
     double duration;
     array_randomizer(small, 100);
     cout << sizeof(small)/sizeof(int);
+
+
     for(int i = 0; i<100; i++){
         cout << small[i] << endl;
     }
 
     
-
+    delete small;
+    delete medium;
+    delete large;
 
     return 0;
 }
@@ -29,3 +33,6 @@ int array_randomizer(int data[], int size){
     }
     return 0;
 }   
+int bubble_sort(int data[], int size){
+
+}

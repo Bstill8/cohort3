@@ -3,23 +3,23 @@
 #include <stdlib.h>
 using namespace std;
 
-int array_randomizer(int data[], int size);
-int main(){
+void array_randomizer(int data[], int32_t size);
+void bubble_sort(int data[], int32_t size);
+int main()
+{
     int *small = new int[100];
     int *medium = new int[10000];
     int *large = new int[1000000];
-    clock_t start;
-    start = clock();
-    double duration;
+    // clock_t start;
+    // start = clock();
+    // double duration;
     array_randomizer(small, 100);
-    cout << sizeof(small)/sizeof(int);
-
-
-    for(int i = 0; i<100; i++){
+    bubble_sort(small, 100);
+    for (int i = 0; i < 100; i++)
+    {
         cout << small[i] << endl;
     }
 
-    
     delete small;
     delete medium;
     delete large;
@@ -27,12 +27,40 @@ int main(){
     return 0;
 }
 
-int array_randomizer(int data[], int size){
-    for(int i = 0; i<size; i++){
+void array_randomizer(int data[], int32_t size)
+{
+    for (int32_t i = 0; i < size; i++)
+    {
         data[i] = rand();
     }
-    return 0;
-}   
-int bubble_sort(int data[], int size){
-
+    return;
+}
+void bubble_sort(int data[], int32_t size)
+{    
+    bool swapped = true;
+    while (swapped == true)
+    {
+        swapped = false;
+        int current = data[0];
+        for (int32_t i = 0; i < size - 1; i++)
+        {
+            if (current >= data[i + 1])
+            {
+                //cout << current << ' '<< data[i + 1] << endl;
+                data[i] = data[i + 1];
+                if (i == size - 2)
+                {
+                    data[i + 1] = current;
+                }
+            }
+            else
+            {
+                
+                data[i] = current;
+                current = data[i + 1];
+                swapped = true;
+            }
+        }
+    }
+    return;
 }

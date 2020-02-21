@@ -1,5 +1,6 @@
 {
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "python.linting.pylintPath": "C:\\Users\\still\\AppData\\Roaming\\Python\\Python37\\Scripts\\pylint.exe"
+    "python.linting.pylintPath": "C:\\Users\\still\\AppData\\Roaming\\Python\\Python37\\Scripts\\pylint.exe",
+    "python.pythonPath": "C:\\Users\\still\\.virtualenvs\\python-M-LGOSuj\\Scripts\\python.exe"
 }

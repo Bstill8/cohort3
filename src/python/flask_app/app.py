@@ -19,7 +19,7 @@ def home():
 def dump():
     return jsonify({"customer": customer, "invoices": invoices, "item": item, "products": products})
 
-@app.route('/customers')
+@app.route('/customers') #displays customer table
 def customers():
     result = '<table><tr><th>ID</th><th>First Name</th><th>Last Name</th></tr>'
     for item in customer:
@@ -32,7 +32,7 @@ def customers():
                 continue
             if after_space:
                 lname = lname + char
-            if not after_space:
+            else:
                 fname = fname + char
 
         result = result + '<tr>' + '<td>' + str(item) + '</td>' + '<td>' + fname + '</td>' + '<td>' + lname + '</td>' + '</tr>'
@@ -41,15 +41,28 @@ def customers():
 
 @app.route('/invoices')
 def invoice():
-    pass
+    result = result = '<table><tr><th>ID</th><th>Date</th><th>Customer ID</th></tr>'
+    for item in invoices:
+        result = result + '<tr>' + '<td>' + str(item) + '</td>' + '<td>' + invoices[item][0] + '</td>' + '<td>' + str(invoices[item][1]) + '</td>' + '</tr>'
+    result = result + '</table>'
+    return result
 
 @app.route('/items')
 def items():
-    pass
+    result = result = '<table><tr><th>ID</th><th>Invoice ID</th><th>Product ID</th><th># of Items</th></tr>'
+    for thing in item:
+        result = result + '<tr>' + '<td>' + str(thing) + '</td>' + '<td>' + str(item[thing][0]) + '</td>' + '<td>' + str(item[thing][1]) + '</td>' + '<td>' + str(item[thing][2]) + '</td>' + '</tr>'
+    result = result + '</table>'
+    return result
+
 
 @app.route('/products')
 def product():
-    pass
+    result = result = '<table><tr><th>ID</th><th>Product Name</th><th>Price</th></tr>'
+    for item in products:
+        result = result + '<tr>' + '<td>' + str(item) + '</td>' + '<td>' + products[item][0] + '</td>' + '<td>' + str(products[item][1]) + '</td>' + '</tr>'
+    result = result + '</table>'
+    return result
 
 
 app.run(port=5003)

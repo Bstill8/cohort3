@@ -21,7 +21,7 @@ def dump():
 
 @app.route('/customers') #displays customer table
 def customers():
-    result = '<table><tr><th>ID</th><th>First Name</th><th>Last Name</th></tr>'
+    result = '<table style="border: 1px solid black; border-spacing: 0px; text-align: center;"><tr style="border: 1px solid black; border-spacing: 0px"><th>ID</th><th>First Name</th><th>Last Name</th></tr>'
     for item in customer:
         fname = ''
         lname = ''
@@ -35,32 +35,32 @@ def customers():
             else:
                 fname = fname + char
 
-        result = result + '<tr>' + '<td>' + str(item) + '</td>' + '<td>' + fname + '</td>' + '<td>' + lname + '</td>' + '</tr>'
+        result = result + '<tr style="border: 1px solid black; border-spacing: 0px">' + '<td style="border: 1px solid black; border-spacing: 0px">' + str(item) + '</td>' + '<td style="border: 1px solid black; border-spacing: 0px">' + fname + '</td>' + '<td style="border: 1px solid black; border-spacing: 0px">' + lname + '</td>' + '</tr>'
     result = result + '</table>'
     return result
 
 @app.route('/invoices')
 def invoice():
-    result = result = '<table><tr><th>ID</th><th>Date</th><th>Customer ID</th></tr>'
+    result = result = '<table style="border: 1px solid black; border-spacing: 0px; text-align: center;"><tr style="border: 1px solid black; border-spacing: 0px"><th>ID</th><th>Date</th><th>Customer ID</th></tr>'
     for item in invoices:
-        result = result + '<tr>' + '<td>' + str(item) + '</td>' + '<td>' + invoices[item][0] + '</td>' + '<td>' + str(invoices[item][1]) + '</td>' + '</tr>'
+        result = result + '<tr style="border: 1px solid black; border-spacing: 0px">' + '<td style="border: 1px solid black; border-spacing: 0px">' + str(item) + '</td>' + '<td style="border: 1px solid black; border-spacing: 0px">' + invoices[item][0] + '</td>' + '<td style="border: 1px solid black; border-spacing: 0px">' + str(invoices[item][1]) + '</td>' + '</tr>'
     result = result + '</table>'
     return result
 
 @app.route('/items')
 def items():
-    result = result = '<table><tr><th>ID</th><th>Invoice ID</th><th>Product ID</th><th># of Items</th></tr>'
+    result = result = '<table style="border: 1px solid black; border-spacing: 0px; text-align: center;"><tr style="border: 1px solid black; border-spacing: 0px"><th>ID</th><th>Invoice ID</th><th>Product ID</th><th># of Items</th></tr>'
     for thing in item:
-        result = result + '<tr>' + '<td>' + str(thing) + '</td>' + '<td>' + str(item[thing][0]) + '</td>' + '<td>' + str(item[thing][1]) + '</td>' + '<td>' + str(item[thing][2]) + '</td>' + '</tr>'
+        result = result + '<tr style="border: 1px solid black; border-spacing: 0px">' + '<td style="border: 1px solid black; border-spacing: 0px">' + str(thing) + '</td>' + '<td style="border: 1px solid black; border-spacing: 0px">' + str(item[thing][0]) + '</td>' + '<td style="border: 1px solid black; border-spacing: 0px">' + str(item[thing][1]) + '</td>' + '<td style="border: 1px solid black; border-spacing: 0px">' + str(item[thing][2]) + '</td>' + '</tr>'
     result = result + '</table>'
     return result
 
 
 @app.route('/products')
 def product():
-    result = result = '<table><tr><th>ID</th><th>Product Name</th><th>Price</th></tr>'
+    result = result = '<table style="border: 1px solid black; border-spacing: 0px; text-align: center;"><tr style="border: 1px solid black; border-spacing: 0px"><th>ID</th><th>Product Name</th><th>Price</th></tr>'
     for item in products:
-        result = result + '<tr>' + '<td>' + str(item) + '</td>' + '<td>' + products[item][0] + '</td>' + '<td>' + str(products[item][1]) + '</td>' + '</tr>'
+        result = result + '<tr style="border: 1px solid black; border-spacing: 0px">' + '<td style="border: 1px solid black; border-spacing: 0px">' + str(item) + '</td>' + '<td style="border: 1px solid black; border-spacing: 0px">' + products[item][0] + '</td>' + '<td style="border: 1px solid black; border-spacing: 0px">' + str(products[item][1]) + '</td>' + '</tr>'
     result = result + '</table>'
     return result
 

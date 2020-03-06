@@ -1,48 +1,52 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
+import {getData} from './fetch'
 
-function App() {
-  let [table, update] = useState("customers")
-  const getTable = async() => {
-    // let route;
-    // if(table === 'product'){
-    //   route = '/products'
-    // }
-    // if(table === 'item'){
-    //   route = '/items'
-    // }
-    // if(table === 'invoice'){
-    //   route = '/invoices'
-    // }else{
-    //   route = '/customers'
-    // }
-    // let response = await fetch("http://127.0.0.1:5003" + route, {
-    //   method: 'GET',
-    //   mode: 'cors',
-    //   cache: 'no-cache',
-    //   credentials: 'same-origin',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   redirect: 'follow',
-    //   referrer: 'no-referrer',
-    // })
-    // console.log(response)
-    return 1
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      table: 'customer',
+      data: 'none'
+    }
   }
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div className="buttons">
-          <button onClick={() => update("customer")}>Customers</button>
-          <button onClick={() => update("invoice")}>Invoices</button>
-          <button onClick={() => update("item")}>Line Items</button>
-          <button onClick={() => update("product")}>Products</button>
-        </div>
-        {getTable()}
-      </header>
-    </div>
-  );
+  getTable = async() => {
+    let route;
+    if(this.state.table === 'product'){
+      route = '/products'
+    }
+    if(this.state.table === 'item'){
+      route = '/items'
+    }
+    if(this.state.table === 'invoice'){
+      route = '/invoices'
+    }else{
+      route = '/customers'
+    }
+    let data = await getData(route)
+    let otherData = await data.html
+    console.log(data)
+    console.log(otherData)
+    this.setState({data: otherData})
+
+  }
+  render(){
+    return (
+      <div className="App">
+        <header className="App-header">
+          <div className="buttons" onClick={this.getTable}>
+            <button onClick={() => this.setState({table: "customer"})}>Customers</button>
+            <button onClick={() => this.setState({table: "invoice"})}>Invoices</button>
+            <button onClick={() => this.setState({table: "item"})}>Line Items</button>
+              <button onClick={() => this.setState({table: "product"})}>Products</button>
+          </div>
+          {this.state.data}
+        </header>
+      </div>
+    );
+  }
+  
 }
+  
 
 export default App;
